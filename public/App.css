@@ -35,8 +35,19 @@ input {
 
 .nav-bar {
   width: 100vw;
+  padding: 10px;
   background-color: #1b1c1d;
   color: white;
+}
+
+.gen-box {
+  width: 100%;
+  padding: 10px;
+  background-color: #1b1c1d;
+  color: white;
+  border: lightslategray;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .landingContainer {

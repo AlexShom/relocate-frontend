@@ -2,10 +2,7 @@ import React, { Fragment } from "react";
 import LandingContent from "../containers/LandingContent";
 import Footer from "../containers/Footer";
 
-const Landingpage = props => {
-  // Header
-  //
-
+const LandingPage = props => {
   return (
     <Fragment>
       <LandingContent />
@@ -14,4 +11,4 @@ const Landingpage = props => {
   );
 };
 
-export default Landingpage;
+export default LandingPage;

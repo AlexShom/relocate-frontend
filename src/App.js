@@ -1,17 +1,31 @@
 import React from "react";
-import "./App.css";
 import LandingPage from "./pages/LandingPage";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useAuth0 } from "./react-auth0-spa";
+import { Router, Route, Switch } from "react-router-dom";
+import Profile from "./components/Profile";
+import history from "./utils/history";
+import PrivateRoute from "./components/PrivateRoute";
+import Dashboard from "./pages/Dashboard";
+import NavBar from "./containers/NavBar"
 
 function App() {
+  const { loading, isAuthenticated } = useAuth0();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <Router>
-      <Switch>
-        <Route path="/">
-          <LandingPage />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router history={history}>
+      {isAuthenticated && <NavBar/>}
+        <Switch>
+          <Route path="/" exact component={LandingPage}/>
+          <PrivateRoute path="/account" component={Profile} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

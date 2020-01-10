@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { Container, Menu, Button } from "semantic-ui-react";
+import { Menu, Button } from "semantic-ui-react";
+import { useAuth0 } from "../react-auth0-spa";
+import { Redirect } from "react-router-dom";
 
 const NavBar = () => {
+  //auth variables
+  const { logout } = useAuth0();
+
   //hooks
-  const [activeItem, setActiveItem] = useState(null);
+  const [activeItem, setActiveItem] = useState("");
 
   //helpers
   const handleItemClick = (e, { name }) => {
@@ -13,38 +18,47 @@ const NavBar = () => {
   //render
   return (
     <div className="nav-bar">
-      <Menu inverted>
+      <Redirect push to={activeItem} />
+      <Menu style={{ height: "0px" }} inverted>
         <Menu.Item
-          name="browse"
-          active={activeItem === "browse"}
+          name=""
+          active={activeItem === ""}
           onClick={handleItemClick}
         >
-          Browse
+          Home
         </Menu.Item>
 
         <Menu.Item
-          name="submit"
-          active={activeItem === "submit"}
+          name="dashboard"
+          active={activeItem === "dashboard"}
           onClick={handleItemClick}
         >
-          Submit
+          Dashboard
         </Menu.Item>
 
+        <Menu.Item
+          name="Sources"
+          active={activeItem === "Sources"}
+          onClick={handleItemClick}
+        >
+          Sources/Methodology
+        </Menu.Item>
         <Menu.Menu position="right">
-          <Menu.Item
-            name="signup"
-            active={activeItem === "signup"}
-            onClick={handleItemClick}
-          >
-            Sign Up
-          </Menu.Item>
-
           <Menu.Item
             name="help"
             active={activeItem === "help"}
             onClick={handleItemClick}
-          >
-            Help
+          ></Menu.Item>
+          <Menu.Item>
+            <Button onClick={() => logout()} color="red" inverted>
+              Log out
+            </Button>
+          </Menu.Item>
+
+          <Menu.Item>
+            <Button name="account" onClick={handleItemClick} color="violet">
+              ACCOUNT
+            </Button>
           </Menu.Item>
         </Menu.Menu>
       </Menu>
