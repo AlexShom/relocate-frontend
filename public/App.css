@@ -23,14 +23,17 @@ body {
   outline: none;
 }
 
-label {
+/* label {
   display: inline-block;
   width: 160px;
-}
+} */
 
 input {
-  margin-left: 20px;
+  /* margin-left: 20px; */
+  /* display: inline-flex; */
   max-width: 60px;
+  color: white;
+  background-color: #2D2E2F;
 }
 
 .nav-bar {
@@ -38,6 +41,7 @@ input {
   padding: 10px;
   background-color: #1b1c1d;
   color: white;
+  border-bottom: solid, #2D2E2F;
 }
 
 .gen-box {
@@ -45,9 +49,13 @@ input {
   padding: 10px;
   background-color: #1b1c1d;
   color: white;
-  border: lightslategray;
+}
+
+.gen-bubble {
+  border-radius: 20px;
+  border: #2D2E2F;
   border-style: solid;
-  border-width: 1px;
+  border-width: 3px;
 }
 
 .landingContainer {
@@ -60,6 +68,10 @@ input {
   padding: 10px;
   color: white;
   text-align: center;
+}
+
+.backBoard {
+  background-color: #1b1c1d;
 }
 
 .centered {
@@ -105,3 +117,8 @@ input {
   transform: translate(-50%, 0%) rotate(45deg);
 }
 
+.slider-box {
+  width: 100%;
+  display: inline-flex;
+  height: 20px;
+}
