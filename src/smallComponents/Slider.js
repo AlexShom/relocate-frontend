@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
+import { Checkbox, Label } from "semantic-ui-react";
 
 const Slider = props => {
   const [sliderValue, setsliderValue] = useState(10000);
 
   return (
-    <div>
-      <div className="slider-box">
+    <div className="checkbox-box">
+      <div className="slider-box ">
         <h5> Budget in GBP £{sliderValue} /week</h5>
       </div>
       <br></br>
@@ -20,7 +21,8 @@ const Slider = props => {
         onChange={value => setsliderValue(value)}
       />
       <br></br>
-      <input type="checkbox"/><label>Over £20 000</label>
+      <Checkbox size="small" />
+      <h4 style={{ display: "inline" }}> Over £20 000</h4>
     </div>
   );
 };

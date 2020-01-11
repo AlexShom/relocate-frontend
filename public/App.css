@@ -26,6 +26,7 @@ body {
 /* label {
   display: inline-block;
   width: 160px;
+  color: white;
 } */
 
 input {
@@ -121,4 +122,13 @@ input {
   width: 100%;
   display: inline-flex;
   height: 20px;
+}
+
+.checkbox-box {
+  border-radius: 15px;
+  border: solid;
+  border-color: #2D2E2F;
+  border-width: 2px;
+  padding: 10px;
+  padding-right: 20px;
 }
