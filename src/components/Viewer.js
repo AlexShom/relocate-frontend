@@ -17,7 +17,7 @@ const settings = {
   touchRotate: false,
   keyboard: false,
   doubleClickZoom: false,
-  minZoom: 5, //11
+  minZoom: 8, //11
   maxZoom: 20
 };
 
@@ -56,7 +56,7 @@ const Viewer = props => {
     height: "500px",
     latitude: 51.5074,
     longitude: -0.1278,
-    zoom: 11 // 11
+    zoom: 9 // 11
   });
 
   // Center button function

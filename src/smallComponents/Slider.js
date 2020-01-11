@@ -1,29 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 import { Checkbox, Label } from "semantic-ui-react";
 
 const Slider = props => {
-  const [sliderValue, setsliderValue] = useState(10000);
+  //hooks
+
+  const [rentValue, setrentValue] = useState({
+    rent: 10000,
+    over: false
+  });
+
+  const [bedsValue, setbedsValue] = useState({
+    beds: 1,
+    over: false
+  });
 
   return (
-    <div className="checkbox-box">
-      <div className="slider-box ">
-        <h5> Budget in GBP £{sliderValue} /week</h5>
+    <Fragment>
+      <div className="checkbox-box">
+        <div className={rentValue.over ? "slider-box disabled" : "slider-box"}>
+          <h5>
+            Budget in GBP:
+            {rentValue.over ? " Over £20 000" : ` £${rentValue.rent} /week`}
+          </h5>
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <InputRange
+          disabled={rentValue.over}
+          maxValue={20000}
+          minValue={0}
+          value={rentValue.rent}
+          onChange={rent => setrentValue({ ...rentValue, rent })}
+        />
+        <br></br>
+        <Checkbox
+          onChange={() => setrentValue({ ...rentValue, over: !rentValue.over })}
+          checked={rentValue.over}
+        />
+        <h4 style={{ display: "inline" }}> Over £20 000</h4>
+        <br></br>
+        <br></br>
+
+        <div className={bedsValue.over ? "slider-box disabled" : "slider-box"}>
+          <h5>
+            Number of Bedrooms: {bedsValue.over ? " Over 5" : bedsValue.beds}
+          </h5>
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <InputRange
+          disabled={bedsValue.over}
+          maxValue={5}
+          minValue={1}
+          value={bedsValue.beds}
+          onChange={beds => setbedsValue({ ...bedsValue, beds })}
+        />
+        <br></br>
+        <Checkbox
+          onChange={() => setbedsValue({ ...bedsValue, over: !bedsValue.over })}
+          checked={bedsValue.over}
+        />
+        <h4 style={{ display: "inline" }}> Over 5</h4>
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <InputRange
-        maxValue={20000}
-        minValue={0}
-        value={sliderValue}
-        onChange={value => setsliderValue(value)}
-      />
-      <br></br>
-      <Checkbox size="small" />
-      <h4 style={{ display: "inline" }}> Over £20 000</h4>
-    </div>
+    </Fragment>
   );
 };
 export default Slider;

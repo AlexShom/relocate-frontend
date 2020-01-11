@@ -34,7 +34,7 @@ input {
   /* display: inline-flex; */
   max-width: 60px;
   color: white;
-  background-color: #2D2E2F;
+  background-color: #2d2e2f;
 }
 
 .nav-bar {
@@ -42,7 +42,7 @@ input {
   padding: 10px;
   background-color: #1b1c1d;
   color: white;
-  border-bottom: solid, #2D2E2F;
+  border-bottom: solid, #2d2e2f;
 }
 
 .gen-box {
@@ -54,7 +54,7 @@ input {
 
 .gen-bubble {
   border-radius: 20px;
-  border: #2D2E2F;
+  border: #2d2e2f;
   border-style: solid;
   border-width: 3px;
 }
@@ -98,15 +98,15 @@ input {
 }
 
 .scroll-down {
-	position: absolute;
-	left: 50%;
-	bottom: 10px;
-	display: block;
-	text-align: center;
-	font-size: 20px;
-	z-index: 100;
-	text-decoration: none;
-	text-shadow: 0;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  z-index: 100;
+  text-decoration: none;
+  text-shadow: 0;
   width: 50px;
   height: 50px;
   border-bottom: 2px solid #fff;
@@ -124,10 +124,14 @@ input {
   height: 20px;
 }
 
+.disabled {
+  color: #2d2e2f;
+}
+
 .checkbox-box {
   border-radius: 15px;
   border: solid;
-  border-color: #2D2E2F;
+  border-color: #2d2e2f;
   border-width: 2px;
   padding: 10px;
   padding-right: 20px;
