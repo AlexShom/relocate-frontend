@@ -23,10 +23,10 @@ const getData = () => {
 };
 
 const fetchData = code => {
-  const url = `https://api.propertydata.co.uk/rents?key=Y4U1F6RMFG&postcode=${code}&bedrooms=2`;
+  const url = `https://api.propertydata.co.uk/rents?key=Y4U1F6RMFG&postcode=${code}&bedrooms=1`;
   return fetch(url)
     .then(resp => resp.json())
-    .catch((error = console.log(error)));
+    .catch((error => console.log(error)));
 };
 
 const writeData = array => {
