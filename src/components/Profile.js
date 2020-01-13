@@ -10,7 +10,7 @@ const Profile = () => {
 
   return (
     <Fragment>
-      {console.log(user.sub)}
+      {console.log(user)}
       <img src={user.picture} alt="Profile" />
 
       <h2>{user.name}</h2>
