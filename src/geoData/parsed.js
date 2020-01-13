@@ -14,15 +14,17 @@ features.map(feature => {
 // console.log(result)
 
 ///////////////////////
-const jsonfile = require('jsonfile')
+// const jsonfile = require('jsonfile')
  
-const file = '/Users/alexshom/Documents/GitHub/relocate/relocate-frontend/src/geoData/data.json'
-const obj = {
-  "type": "FeatureCollection",
-  "features": result}
+// const file = '/Users/alexshom/Documents/GitHub/relocate/relocate-frontend/src/geoData/data.json'
+// const obj = {
+//   "type": "FeatureCollection",
+//   "features": result}
  
-jsonfile.writeFile(file, obj, function (err) {
-  if (err) console.error(err)
-})
+// jsonfile.writeFile(file, obj, function (err) {
+//   if (err) console.error(err)
+// })
 ///////////////////////
 
+const datanum = require('./DisJS.json')
+console.log(datanum.features.map(feature => feature.properties.name))

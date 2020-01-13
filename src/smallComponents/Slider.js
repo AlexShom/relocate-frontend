@@ -1,21 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
-import { Checkbox, Label } from "semantic-ui-react";
+import { Checkbox } from "semantic-ui-react";
 
-const Slider = props => {
-  //hooks
-
-  const [rentValue, setrentValue] = useState({
-    rent: 10000,
-    over: false
-  });
-
-  const [bedsValue, setbedsValue] = useState({
-    beds: 1,
-    over: false
-  });
-
+const Slider = ({ rentValue, setrentValue, bedsValue, setbedsValue }) => {
   return (
     <Fragment>
       <div className="checkbox-box">
