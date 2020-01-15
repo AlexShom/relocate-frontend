@@ -6,11 +6,7 @@ import SearchCriteria from "../components/SearchCriteria";
 const Dashboard = props => {
   //Hooks
 
-  const [filterBoolean, setFilterBoolean] = useState({
-    useRent: true,
-    usePrice: false,
-    useYield: false
-  });
+  const [selectedFilter, setSelectedFilter] = useState("useRent");
 
   const [rentValue, setRentValue] = useState({
     rent: 3000,
@@ -46,8 +42,8 @@ const Dashboard = props => {
                 <SearchCriteria
                   rentValue={rentValue}
                   setRentValue={setRentValue}
-                  filterBoolean={filterBoolean}
-                  setFilterBoolean={setFilterBoolean}
+                  selectedFilter={selectedFilter}
+                  setSelectedFilter={setSelectedFilter}
                 />
               </Container>
             </Container>

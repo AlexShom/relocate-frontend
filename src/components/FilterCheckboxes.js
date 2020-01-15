@@ -2,22 +2,18 @@ import React, { Fragment } from "react";
 import { Checkbox } from "semantic-ui-react";
 
 const FilterCheckboxes = ({
-  setFilterBoolean,
-  filterBoolean,
+  setSelectedFilter,
+  selectedFilter,
   message,
   changeValue
 }) => {
   return (
     <div className="checkbox-box">
-      {console.log(changeValue)}
       <Checkbox
         onChange={() =>
-          setFilterBoolean({
-            ...filterBoolean,
-            [changeValue]: !filterBoolean[changeValue]
-          })
+          setSelectedFilter(changeValue)
         }
-        checked={filterBoolean[changeValue]}
+        checked={selectedFilter === changeValue}
       />
       <h4 style={{ display: "inline" }}> {message}</h4>
     </div>

@@ -6,8 +6,8 @@ import FilterCheckboxes from "./FilterCheckboxes";
 const SearchCriteria = ({
   rentValue,
   setRentValue,
-  filterBoolean,
-  setFilterBoolean
+  selectedFilter,
+  setSelectedFilter
 }) => {
   const messageRent = "Use Average Rent per week to filter";
   const messagePrice = "Use Average Price per sqft to filter";
@@ -20,20 +20,20 @@ const SearchCriteria = ({
     <Grid>
       <Grid.Column style={{ minWidth: "200px" }}>
         <FilterCheckboxes
-          filterBoolean={filterBoolean}
-          setFilterBoolean={setFilterBoolean}
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
           message={messageRent}
           changeValue={changeValueRent}
         />
         <FilterCheckboxes
-          filterBoolean={filterBoolean}
-          setFilterBoolean={setFilterBoolean}
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
           message={messagePrice}
           changeValue={changeValuePrice}
         />
         <FilterCheckboxes
-          filterBoolean={filterBoolean}
-          setFilterBoolean={setFilterBoolean}
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
           message={messageYield}
           changeValue={changeValueYield}
         />
