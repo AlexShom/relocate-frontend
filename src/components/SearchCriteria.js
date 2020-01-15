@@ -1,19 +1,13 @@
-import React, { useState } from "react";
-import { Container, Grid } from "semantic-ui-react";
+import React from "react";
+import { Grid } from "semantic-ui-react";
 import Slider from "../smallComponents/Slider";
 
-const SearchCriteria = props => {
-  //Hooks
-  const [rentValue, setrentValue] = useState({
-    rent: 10000,
-    over: false
-  });
-
-  const [bedsValue, setbedsValue] = useState({
-    beds: 1,
-    over: false
-  });
-
+const SearchCriteria = ({
+  rentValue,
+  bedsValue,
+  setrentValue,
+  setbedsValue
+}) => {
   return (
     <Grid>
       <Grid.Column style={{ minWidth: "200px" }}>
