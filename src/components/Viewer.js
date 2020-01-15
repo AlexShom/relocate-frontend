@@ -7,7 +7,7 @@ import ReactMapGL, { FlyToInterpolator, Layer, Source } from "react-map-gl";
 const TOKEN =
   "pk.eyJ1IjoiYXNob20iLCJhIjoiY2s1NDN0bHc3MGUyZTNubHp1MnpmYmZyNiJ9.-fQZdkNM7ewNZqnDQag12g";
 
-const Viewer = props => {
+const Viewer = ({ mapLayer }) => {
   //map control//
   //hook
 
@@ -57,9 +57,6 @@ const Viewer = props => {
   //   "#3bb2d0",
   //   /* other */ "#ccc"
   // ]
-
-  //data prop
-  const json = require("../geoData/nocollection.json");
 
   const postcodeLayer = {
     id: "data",
@@ -116,6 +113,24 @@ const Viewer = props => {
           style={{ left: hoveredFeature.x, top: hoveredFeature.y }}
         >
           <div>Postcode: {hoveredFeature.feature.properties.name}</div>
+          <div>
+            Rental Average: {hoveredFeature.feature.properties.beds0Rent}/week
+          </div>
+          <div>
+            Rental Average: {hoveredFeature.feature.properties.beds1Rent}/week
+          </div>
+          <div>
+            Rental Average: {hoveredFeature.feature.properties.beds2Rent}/week
+          </div>
+          <div>
+            Rental Average: {hoveredFeature.feature.properties.beds3Rent}/week
+          </div>
+          <div>
+            Rental Average: {hoveredFeature.feature.properties.beds4Rent}/week
+          </div>
+          <div>
+            Rental Average: {hoveredFeature.feature.properties.beds5Rent}/week
+          </div>
         </div>
       )
     );
@@ -135,7 +150,7 @@ const Viewer = props => {
         mapboxApiAccessToken={TOKEN}
         onHover={onHover}
       >
-        <Source type="geojson" data={json}>
+        <Source type="geojson" data={mapLayer}>
           <Layer {...postcodeLayer} />
         </Source>
         {tooltip()}
