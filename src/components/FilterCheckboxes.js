@@ -10,9 +10,7 @@ const FilterCheckboxes = ({
   return (
     <div className="checkbox-box">
       <Checkbox
-        onChange={() =>
-          setSelectedFilter(changeValue)
-        }
+        onChange={() => setSelectedFilter(changeValue)}
         checked={selectedFilter === changeValue}
       />
       <h4 style={{ display: "inline" }}> {message}</h4>

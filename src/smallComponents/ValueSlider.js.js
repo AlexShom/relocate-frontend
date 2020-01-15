@@ -3,14 +3,14 @@ import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 import { Checkbox } from "semantic-ui-react";
 
-const RentSlider = ({ rentValue, setRentValue }) => {
+const ValueSlider = ({ value, setValue, messageOver }) => {
   return (
     <Fragment>
       <div className="checkbox-box">
-        <div className={rentValue.over ? "slider-box disabled" : "slider-box"}>
+        <div className={value.over ? "slider-box disabled" : "slider-box"}>
           <h5>
             Budget in GBP:
-            {rentValue.over ? " Over £3000" : ` £${rentValue.rent} /week`}
+            {value.over ? ` ${messageOver}` : ` £${value.rent} `}
           </h5>
         </div>
         <br></br>
@@ -18,24 +18,22 @@ const RentSlider = ({ rentValue, setRentValue }) => {
         <br></br>
 
         <InputRange
-          disabled={rentValue.over}
+          disabled={value.over}
           maxValue={3000}
           minValue={0}
-          value={rentValue.rent}
-          onChange={rent => setRentValue({ ...rentValue, rent })}
+          value={value.rent}
+          onChange={rent => setValue({ ...value, rent })}
         />
         <br></br>
         <Checkbox
-          onChange={() => setRentValue({ ...rentValue, over: !rentValue.over })}
-          checked={rentValue.over}
+          onChange={() => setValue({ ...value, over: !value.over })}
+          checked={value.over}
         />
-        <h4 style={{ display: "inline" }}> Over £3000</h4>
+        <h4 style={{ display: "inline" }}> {messageOver}</h4>
         <br></br>
         <br></br>
-
-        
       </div>
     </Fragment>
   );
 };
-export default RentSlider;
+export default ValueSlider;

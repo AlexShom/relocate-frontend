@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "semantic-ui-react";
-import RentSlider from "../smallComponents/RentSlider.js";
+import ValueSlider from "../smallComponents/ValueSlider.js.js";
 import FilterCheckboxes from "./FilterCheckboxes";
 
 const SearchCriteria = ({
@@ -12,9 +12,8 @@ const SearchCriteria = ({
   const messageRent = "Use Average Rent per week to filter";
   const messagePrice = "Use Average Price per sqft to filter";
   const messageYield = "Use Average yield in % to filter";
-  const changeValueRent = "useRent";
-  const changeValuePrice = "usePrice";
-  const changeValueYield = "useYield";
+  const messageOver = `Over ${rentValue.rent}`;
+
 
   return (
     <Grid>
@@ -23,24 +22,28 @@ const SearchCriteria = ({
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           message={messageRent}
-          changeValue={changeValueRent}
+          changeValue={"useRent"}
         />
         <FilterCheckboxes
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           message={messagePrice}
-          changeValue={changeValuePrice}
+          changeValue={"usePrice"}
         />
         <FilterCheckboxes
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           message={messageYield}
-          changeValue={changeValueYield}
+          changeValue={"useYield"}
         />
       </Grid.Column>
 
       <Grid.Column style={{ minWidth: "200px" }}>
-        <RentSlider rentValue={rentValue} setRentValue={setRentValue} />
+        <ValueSlider
+          value={rentValue}
+          setValue={setRentValue}
+          messageOver={messageOver}
+        />
       </Grid.Column>
       <Grid.Column></Grid.Column>
     </Grid>
