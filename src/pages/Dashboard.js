@@ -20,7 +20,7 @@ const Dashboard = props => {
   //Helpers
 
   const getMapLayer = () => {
-    const json = require("../geoData/mapWithRentalsTest.json");
+    const json = require("../geoData/mapDataWithValues.json");
     setmapLayer(json);
   };
 

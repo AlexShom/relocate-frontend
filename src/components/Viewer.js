@@ -113,24 +113,6 @@ const Viewer = ({ mapLayer }) => {
           style={{ left: hoveredFeature.x, top: hoveredFeature.y }}
         >
           <div>Postcode: {hoveredFeature.feature.properties.name}</div>
-          <div>
-            Rental Average: {hoveredFeature.feature.properties.beds0Rent}/week
-          </div>
-          <div>
-            Rental Average: {hoveredFeature.feature.properties.beds1Rent}/week
-          </div>
-          <div>
-            Rental Average: {hoveredFeature.feature.properties.beds2Rent}/week
-          </div>
-          <div>
-            Rental Average: {hoveredFeature.feature.properties.beds3Rent}/week
-          </div>
-          <div>
-            Rental Average: {hoveredFeature.feature.properties.beds4Rent}/week
-          </div>
-          <div>
-            Rental Average: {hoveredFeature.feature.properties.beds5Rent}/week
-          </div>
         </div>
       )
     );
