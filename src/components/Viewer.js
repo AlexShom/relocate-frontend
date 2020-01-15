@@ -113,6 +113,7 @@ const Viewer = ({ mapLayer }) => {
           style={{ left: hoveredFeature.x, top: hoveredFeature.y }}
         >
           <div>Postcode: {hoveredFeature.feature.properties.name}</div>
+          <div>{console.log(hoveredFeature.feature.properties)}</div>
         </div>
       )
     );

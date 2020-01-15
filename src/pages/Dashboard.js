@@ -20,15 +20,17 @@ const Dashboard = props => {
   //Helpers
 
   const getMapLayer = () => {
-    const json = require("../geoData/mapDataWithValues.json");
-    setmapLayer(json);
+    fetch("http://localhost:3000/maps/1")
+      .then(resp => resp.json())
+      // .then(console.log)
+      .then(json => setmapLayer(json));
   };
 
   //Lifecycle
 
   useEffect(() => {
-    getMapLayer()
-  },[])
+    getMapLayer();
+  }, []);
 
   //Render
 
