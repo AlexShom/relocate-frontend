@@ -5,17 +5,19 @@ import SearchCriteria from "../components/SearchCriteria";
 
 const Dashboard = props => {
   //Hooks
-  const [rentValue, setrentValue] = useState({
-    rent: 10000,
+
+  const [filterBoolean, setFilterBoolean] = useState({
+    useRent: true,
+    usePrice: false,
+    useYield: false
+  });
+
+  const [rentValue, setRentValue] = useState({
+    rent: 3000,
     over: false
   });
 
-  const [bedsValue, setbedsValue] = useState({
-    beds: 1,
-    over: false
-  });
-
-  const [mapLayer, setmapLayer] = useState(null);
+  const [mapLayer, setMapLayer] = useState(null);
 
   //Helpers
 
@@ -23,7 +25,7 @@ const Dashboard = props => {
     fetch("http://localhost:3000/maps/1")
       .then(resp => resp.json())
       // .then(console.log)
-      .then(json => setmapLayer(json));
+      .then(json => setMapLayer(json));
   };
 
   //Lifecycle
@@ -38,38 +40,32 @@ const Dashboard = props => {
     <div className="backBoard">
       <Grid>
         <Grid.Row>
-          <Grid.Column name="searchCriteria" width={8}>
+          <Grid.Column name="searchCriteria" width={6}>
             <Container className="gen-box">
               <Container className="gen-box gen-bubble">
                 <SearchCriteria
                   rentValue={rentValue}
-                  bedsValue={bedsValue}
-                  setrentValue={setrentValue}
-                  setbedsValue={setbedsValue}
+                  setRentValue={setRentValue}
+                  filterBoolean={filterBoolean}
+                  setFilterBoolean={setFilterBoolean}
                 />
               </Container>
             </Container>
-          </Grid.Column>
-          <Grid.Column name="mapNav" width={8}>
-            <Container className="gen-box">
-              <Container className="gen-box gen-bubble">
-                Map nav buttons
-              </Container>
-            </Container>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column name="rankingList" width={4}>
             <Container className="gen-box">
               <Container className="gen-box gen-bubble">
                 List placeholder
               </Container>
             </Container>
           </Grid.Column>
-          <Grid.Column name="map" width={12}>
+
+          <Grid.Column name="map" width={10}>
             <Container className="gen-box">
-              <Viewer mapLayer={mapLayer} />
+              <Container className="gen-box gen-bubble">
+                Map nav buttons
+              </Container>
+              <Container className="gen-box">
+                <Viewer mapLayer={mapLayer} />
+              </Container>
             </Container>
           </Grid.Column>
         </Grid.Row>
