@@ -7,9 +7,8 @@ import ReactMapGL, { FlyToInterpolator, Layer, Source } from "react-map-gl";
 const TOKEN =
   "pk.eyJ1IjoiYXNob20iLCJhIjoiY2s1NDN0bHc3MGUyZTNubHp1MnpmYmZyNiJ9.-fQZdkNM7ewNZqnDQag12g";
 
-const Viewer = ({ mapLayer }) => {
+const Viewer = ({ mapLayer, mapFilter, setMapFilter, mapFillColor, setMapFillColor }) => {
   //map control//
-  //hook
 
   const [viewport, setViewport] = useState({
     width: "100%",
@@ -33,41 +32,16 @@ const Viewer = ({ mapLayer }) => {
     maxZoom: 20
   };
 
-  //Data driven styling//
-  //hooks
-  const [filter, setfilter] = useState(["has", "name"]);
-  const [fillColor, setfillColor] = useState([
-    "match",
-    ["get", "name"],
-    "SW3",
-    "#fbb03b",
-    "#096925"
-  ]);
-  //^^ change to default until selected in state example down
-  // "fill-color": [
-  //   "match",
-  //   ["get", "name"],
-  //   "SW3",
-  //   "#fbb03b",
-  //   "Black",
-  //   "#223b53",
-  //   "Hispanic",
-  //   "#e55e5e",
-  //   "Asian",
-  //   "#3bb2d0",
-  //   /* other */ "#ccc"
-  // ]
-
   const postcodeLayer = {
     id: "data",
     type: "fill",
     paint: {
-      "fill-color": fillColor,
+      "fill-color": mapFillColor,
       "fill-opacity": 0.7
     },
     // filter: ["has", "name"]
     // filter: ["in", "name", "SW3", "SW1"]
-    filter: filter
+    filter: mapFilter
   };
 
   //Center button function//
