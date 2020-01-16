@@ -16,6 +16,8 @@ const Dashboard = props => {
 
   const [mapLayer, setMapLayer] = useState(null);
 
+  const [allDistricts, setAllDistricts] = useState([]);
+
   //Data driven styling
 
   const [mapFilter, setMapFilter] = useState(["has", "name"]);
@@ -39,8 +41,22 @@ const Dashboard = props => {
   const getPostcodeInfo = () => {
     fetch(postcodesAPI)
       .then(resp => resp.json())
-      // .then(resp)
-      .then(console.log);
+      .then(districts => {
+        setAllDistricts(districts);
+        return districts.map(district => district.postcode);
+      })
+      .then(districts => setMapFilter(["in", "name", ...districts]));
+  };
+
+  // filter functions
+
+  const filterOutDistricts = () => {
+    let array = null;
+    console.log(allDistricts)
+    if (selectedFilter === "useRent") array = allDistricts.filter(district => district.ave_rent < rentValue.rent)
+    if (selectedFilter === "usePrice") array = allDistricts.filter(district => district.ave_price < rentValue.rent)
+    if (selectedFilter === "useYield") array = allDistricts.filter(district => district.ave_yield < rentValue.rent)
+    console.log(array)
   };
 
   //Lifecycle
@@ -51,15 +67,8 @@ const Dashboard = props => {
   }, []);
 
   useEffect(() => {
-    console.log("hit");
-    if (selectedFilter === "useRent") {
-      //runFilter(rentvalues)
-    } else if (selectedFilter === "usePrice") {
-      //runFilter(pricevalues)
-    } else {
-      //runfFilter(yieldvalues)
-    }
-  }, [selectedFilter]);
+    filterOutDistricts();
+  }, [selectedFilter, rentValue]);
 
   //Render
 
