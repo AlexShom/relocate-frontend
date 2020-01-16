@@ -12,8 +12,39 @@ const SearchCriteria = ({
   const messageRent = "Use Average Rent per week to filter";
   const messagePrice = "Use Average Price per sqft to filter";
   const messageYield = "Use Average yield in % to filter";
-  const messageOver = `Over ${rentValue.rent}`;
 
+  const sliderChoice = () => {
+    if (selectedFilter === "useRent") {
+      return (
+        <ValueSlider
+          value={rentValue}
+          setValue={setRentValue}
+          maxValue={3000}
+          minValue={0}
+        />
+      );
+    } else if (selectedFilter === "usePrice") {
+      return (
+        <ValueSlider
+          value={rentValue}
+          setValue={setRentValue}
+          maxValue={1500}
+          minValue={0}
+        />
+      );
+    } else {
+      return (
+        <ValueSlider
+          usePercent={true}
+          value={rentValue}
+          setValue={setRentValue}
+          maxValue={5}
+          minValue={0}
+          step={0.1}
+        />
+      );
+    }
+  };
 
   return (
     <Grid>
@@ -22,30 +53,23 @@ const SearchCriteria = ({
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           message={messageRent}
-          changeValue={"useRent"}
+          changeValue="useRent"
         />
         <FilterCheckboxes
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           message={messagePrice}
-          changeValue={"usePrice"}
+          changeValue="usePrice"
         />
         <FilterCheckboxes
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           message={messageYield}
-          changeValue={"useYield"}
+          changeValue="useYield"
         />
       </Grid.Column>
 
-      <Grid.Column style={{ minWidth: "200px" }}>
-        <ValueSlider
-          value={rentValue}
-          setValue={setRentValue}
-          messageOver={messageOver}
-        />
-      </Grid.Column>
-      <Grid.Column></Grid.Column>
+      <Grid.Column style={{ minWidth: "200px" }}>{sliderChoice()}</Grid.Column>
     </Grid>
   );
 };

@@ -9,7 +9,7 @@ const Dashboard = props => {
   const [selectedFilter, setSelectedFilter] = useState("useRent");
 
   const [rentValue, setRentValue] = useState({
-    rent: 3000,
+    rent: 0,
     over: false
   });
 
