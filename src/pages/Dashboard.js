@@ -51,12 +51,28 @@ const Dashboard = props => {
   // filter functions
 
   const filterOutDistricts = () => {
-    let array = null;
-    console.log(allDistricts)
-    if (selectedFilter === "useRent") array = allDistricts.filter(district => district.ave_rent < rentValue.rent)
-    if (selectedFilter === "usePrice") array = allDistricts.filter(district => district.ave_price < rentValue.rent)
-    if (selectedFilter === "useYield") array = allDistricts.filter(district => district.ave_yield < rentValue.rent)
-    console.log(array)
+    if (rentValue.over) {
+      const filteredArray = allDistricts.map(district => district.postcode);
+      setMapFilter(["in", "name", ...filteredArray]);
+    } else {
+      let array = null;
+      console.log(allDistricts);
+      if (selectedFilter === "useRent")
+        array = allDistricts.filter(
+          district => district.ave_rent < rentValue.rent
+        );
+      if (selectedFilter === "usePrice")
+        array = allDistricts.filter(
+          district => district.ave_price < rentValue.rent
+        );
+      if (selectedFilter === "useYield")
+        array = allDistricts.filter(
+          district => district.ave_yield < rentValue.rent
+        );
+      const filteredArray = array.map(district => district.postcode);
+
+      setMapFilter(["in", "name", ...filteredArray]);
+    }
   };
 
   //Lifecycle

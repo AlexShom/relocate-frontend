@@ -19,7 +19,7 @@ const SearchCriteria = ({
         <ValueSlider
           value={rentValue}
           setValue={setRentValue}
-          maxValue={3000}
+          maxValue={3500}
           minValue={0}
         />
       );

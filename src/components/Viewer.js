@@ -15,7 +15,7 @@ const Viewer = ({ mapLayer, mapFilter, setMapFilter, mapFillColor, setMapFillCol
     height: "500px",
     latitude: 51.5074,
     longitude: -0.1278,
-    zoom: 9 // 11
+    zoom: 9.5 // 11
   });
 
   //Map controller Settings
