@@ -69,7 +69,7 @@ const SearchCriteria = ({
         />
       </Grid.Column>
 
-      <Grid.Column style={{ minWidth: "200px" }}>{sliderChoice()}<div>Checkboxes to rank by</div></Grid.Column>
+      <Grid.Column style={{ minWidth: "400px" }}>{sliderChoice()}<div>Checkboxes to rank by</div></Grid.Column>
     </Grid>
   );
 };

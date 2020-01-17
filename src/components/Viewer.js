@@ -37,7 +37,8 @@ const Viewer = ({ mapLayer, mapFilter, setMapFilter, mapFillColor, setMapFillCol
     type: "fill",
     paint: {
       "fill-color": mapFillColor,
-      "fill-opacity": 0.7
+      "fill-opacity": 0.5,
+      "fill-outline-color": "#000000"//"#00ff00"
     },
     // filter: ["has", "name"]
     // filter: ["in", "name", "SW3", "SW1"]
@@ -102,7 +103,9 @@ const Viewer = ({ mapLayer, mapFilter, setMapFilter, mapFillColor, setMapFillCol
         {...viewport}
         {...settings}
         onViewportChange={setViewport}
-        mapStyle="mapbox://styles/mapbox/dark-v9"
+        mapStyle="mapbox://styles/mapbox/streets-v11"
+        // mapStyle="mapbox://styles/mapbox/dark-v10"
+
         mapboxApiAccessToken={TOKEN}
         onHover={onHover}
       >
