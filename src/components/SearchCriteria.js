@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Grid } from "semantic-ui-react";
 import ValueSlider from "../smallComponents/ValueSlider.js.js";
 import FilterCheckboxes from "./FilterCheckboxes";
+import DistanceForm from "./DistanceForm";
 
 const SearchCriteria = ({
   rentValue,
@@ -47,29 +48,36 @@ const SearchCriteria = ({
   };
 
   return (
-    <Grid >
+    <Grid>
       <Grid.Column style={{ minWidth: "200px" }}>
-        <FilterCheckboxes
-          selectedFilter={selectedFilter}
-          setSelectedFilter={setSelectedFilter}
-          message={messageRent}
-          changeValue="useRent"
-        />
-        <FilterCheckboxes
-          selectedFilter={selectedFilter}
-          setSelectedFilter={setSelectedFilter}
-          message={messagePrice}
-          changeValue="usePrice"
-        />
-        <FilterCheckboxes
-          selectedFilter={selectedFilter}
-          setSelectedFilter={setSelectedFilter}
-          message={messageYield}
-          changeValue="useYield"
-        />
+        <div className="checkbox-box">
+          <FilterCheckboxes
+            selectedFilter={selectedFilter}
+            setSelectedFilter={setSelectedFilter}
+            message={messageRent}
+            changeValue="useRent"
+          />
+          <FilterCheckboxes
+            selectedFilter={selectedFilter}
+            setSelectedFilter={setSelectedFilter}
+            message={messagePrice}
+            changeValue="usePrice"
+          />
+          <FilterCheckboxes
+            selectedFilter={selectedFilter}
+            setSelectedFilter={setSelectedFilter}
+            message={messageYield}
+            changeValue="useYield"
+          />
+        </div>
       </Grid.Column>
 
-      <Grid.Column style={{ minWidth: "250px" }}>{sliderChoice()}<div className="checkbox-box">Checkboxes to rank by</div></Grid.Column>
+      <Grid.Column style={{ minWidth: "250px" }}>
+        {sliderChoice()}
+        <div className="checkbox-box">
+          <DistanceForm />
+        </div>
+      </Grid.Column>
     </Grid>
   );
 };

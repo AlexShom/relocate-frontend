@@ -8,11 +8,8 @@ const Dashboard = props => {
   //Hooks
 
   const [selectedFilter, setSelectedFilter] = useState("useRent");
-
   const [rentValue, setRentValue] = useState(0);
-
   const [mapLayer, setMapLayer] = useState(null);
-
   const [allDistricts, setAllDistricts] = useState([]);
 
   //Data driven styling
@@ -27,9 +24,9 @@ const Dashboard = props => {
   ]);
 
   //Helpers
-  const findCorrectDistrict = (name) => {
-    return allDistricts.find(district => district.postcode === name)
-  }
+  const findCorrectDistrict = name => {
+    return allDistricts.find(district => district.postcode === name);
+  };
 
   const getMapLayer = () => {
     fetch(mapsAPI)
@@ -52,7 +49,6 @@ const Dashboard = props => {
 
   const filterOutDistricts = () => {
     let array = null;
-    console.log(allDistricts);
     if (selectedFilter === "useRent")
       array = allDistricts.filter(district => district.ave_rent <= rentValue);
     if (selectedFilter === "usePrice")
@@ -99,7 +95,7 @@ const Dashboard = props => {
             </Container>
           </Grid.Column>
 
-          <Grid.Column name="map" width={10} >
+          <Grid.Column name="map" width={10}>
             <Container className="gen-box">
               <Container className="gen-box gen-bubble">
                 Map nav buttons

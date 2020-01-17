@@ -19,8 +19,8 @@ const Viewer = ({
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "500px",
-    latitude: 51.5074,
-    longitude: -0.1278,
+    latitude: 51.5262,
+    longitude: -0.1198,
     zoom: 9.5 // 11
   });
 
@@ -53,8 +53,8 @@ const Viewer = ({
 
   const handleCenter = () => {
     setViewport({
-      latitude: 51.5074,
-      longitude: -0.1278,
+      latitude: 51.5074, //0.23771710824681078
+      longitude: -0.1278, //51.44404477710085
       transitionDuration: 1000,
       transitionInterpolator: new FlyToInterpolator()
     });
@@ -96,7 +96,6 @@ const Viewer = ({
     } = event;
     const feature = features && features.find(f => f.layer.id === "data");
     addProps(feature);
-    // console.log(feature.properties)
     sethoveredFeature({ feature, x: offsetX, y: offsetY });
   };
 
@@ -110,17 +109,22 @@ const Viewer = ({
           <div>Postcode: {hoveredFeature.feature.properties.name}</div>
           {selectedFilter === "useRent" ? (
             <div>
-              {"Average Rent: £" + hoveredFeature.feature.properties.ave_rent + "/month"}
+              {"Average Rent: £" +
+                hoveredFeature.feature.properties.ave_rent +
+                "/month"}
             </div>
           ) : null}
           {selectedFilter === "usePrice" ? (
             <div>
-              {"Average price /sqft: £" + hoveredFeature.feature.properties.ave_rent}
+              {"Average price /sqft: £" +
+                hoveredFeature.feature.properties.ave_rent}
             </div>
           ) : null}
           {selectedFilter === "useYield" ? (
             <div>
-              {"Average Yield:" + hoveredFeature.feature.properties.ave_rent + "%"}
+              {"Average Yield:" +
+                hoveredFeature.feature.properties.ave_rent +
+                "%"}
             </div>
           ) : null}
         </div>

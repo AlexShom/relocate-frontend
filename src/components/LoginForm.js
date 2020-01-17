@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Message,
-  Segment,
-  Divider,
-  GridColumn
-} from "semantic-ui-react";
+import { Button, Grid } from "semantic-ui-react";
 import { useAuth0 } from "../react-auth0-spa";
 import { Link } from "react-router-dom";
 
@@ -35,7 +26,7 @@ const LoginForm = () => {
             </Button>
           )}
           {isAuthenticated && (
-            <Link to= "/dashboard">
+            <Link to="/dashboard">
               <Button size="huge" color="violet" inverted>
                 Go to my Dashboard!
               </Button>
