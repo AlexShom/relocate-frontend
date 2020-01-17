@@ -9,10 +9,7 @@ const Dashboard = props => {
 
   const [selectedFilter, setSelectedFilter] = useState("useRent");
 
-  const [rentValue, setRentValue] = useState({
-    rent: 0,
-    over: false
-  });
+  const [rentValue, setRentValue] = useState(0);
 
   const [mapLayer, setMapLayer] = useState(null);
 
@@ -51,28 +48,17 @@ const Dashboard = props => {
   // filter functions
 
   const filterOutDistricts = () => {
-    if (rentValue.over) {
-      const filteredArray = allDistricts.map(district => district.postcode);
-      setMapFilter(["in", "name", ...filteredArray]);
-    } else {
-      let array = null;
-      console.log(allDistricts);
-      if (selectedFilter === "useRent")
-        array = allDistricts.filter(
-          district => district.ave_rent < rentValue.rent
-        );
-      if (selectedFilter === "usePrice")
-        array = allDistricts.filter(
-          district => district.ave_price < rentValue.rent
-        );
-      if (selectedFilter === "useYield")
-        array = allDistricts.filter(
-          district => district.ave_yield < rentValue.rent
-        );
-      const filteredArray = array.map(district => district.postcode);
+    let array = null;
+    console.log(allDistricts);
+    if (selectedFilter === "useRent")
+      array = allDistricts.filter(district => district.ave_rent <= rentValue);
+    if (selectedFilter === "usePrice")
+      array = allDistricts.filter(district => district.ave_price <= rentValue);
+    if (selectedFilter === "useYield")
+      array = allDistricts.filter(district => district.ave_yield <= rentValue);
+    const filteredArray = array.map(district => district.postcode);
 
-      setMapFilter(["in", "name", ...filteredArray]);
-    }
+    setMapFilter(["in", "name", ...filteredArray]);
   };
 
   //Lifecycle
@@ -110,7 +96,7 @@ const Dashboard = props => {
             </Container>
           </Grid.Column>
 
-          <Grid.Column name="map" width={10}>
+          <Grid.Column name="map" width={10} >
             <Container className="gen-box">
               <Container className="gen-box gen-bubble">
                 Map nav buttons

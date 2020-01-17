@@ -9,7 +9,7 @@ const SearchCriteria = ({
   selectedFilter,
   setSelectedFilter
 }) => {
-  const messageRent = "Use Average Rent per week to filter";
+  const messageRent = "Use Average Rent per month to filter";
   const messagePrice = "Use Average Price per sqft to filter";
   const messageYield = "Use Average yield in % to filter";
 
@@ -19,7 +19,7 @@ const SearchCriteria = ({
         <ValueSlider
           value={rentValue}
           setValue={setRentValue}
-          maxValue={3500}
+          maxValue={4000}
           minValue={0}
         />
       );
@@ -28,7 +28,7 @@ const SearchCriteria = ({
         <ValueSlider
           value={rentValue}
           setValue={setRentValue}
-          maxValue={1500}
+          maxValue={2000}
           minValue={0}
         />
       );
@@ -38,7 +38,7 @@ const SearchCriteria = ({
           usePercent={true}
           value={rentValue}
           setValue={setRentValue}
-          maxValue={5}
+          maxValue={8.1}
           minValue={0}
           step={0.1}
         />
@@ -47,7 +47,7 @@ const SearchCriteria = ({
   };
 
   return (
-    <Grid>
+    <Grid >
       <Grid.Column style={{ minWidth: "200px" }}>
         <FilterCheckboxes
           selectedFilter={selectedFilter}
@@ -69,7 +69,7 @@ const SearchCriteria = ({
         />
       </Grid.Column>
 
-      <Grid.Column style={{ minWidth: "400px" }}>{sliderChoice()}<div>Checkboxes to rank by</div></Grid.Column>
+      <Grid.Column style={{ minWidth: "250px" }}>{sliderChoice()}<div className="checkbox-box">Checkboxes to rank by</div></Grid.Column>
     </Grid>
   );
 };
