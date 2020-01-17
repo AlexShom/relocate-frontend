@@ -7,7 +7,13 @@ import ReactMapGL, { FlyToInterpolator, Layer, Source } from "react-map-gl";
 const TOKEN =
   "pk.eyJ1IjoiYXNob20iLCJhIjoiY2s1NDN0bHc3MGUyZTNubHp1MnpmYmZyNiJ9.-fQZdkNM7ewNZqnDQag12g";
 
-const Viewer = ({ mapLayer, mapFilter, setMapFilter, mapFillColor, setMapFillColor }) => {
+const Viewer = ({
+  mapLayer,
+  mapFilter,
+  mapFillColor,
+  selectedFilter,
+  findCorrectDistrict
+}) => {
   //map control//
 
   const [viewport, setViewport] = useState({
@@ -38,10 +44,8 @@ const Viewer = ({ mapLayer, mapFilter, setMapFilter, mapFillColor, setMapFillCol
     paint: {
       "fill-color": mapFillColor,
       "fill-opacity": 0.5,
-      "fill-outline-color": "#000000"//"#00ff00"
+      "fill-outline-color": "#000000"
     },
-    // filter: ["has", "name"]
-    // filter: ["in", "name", "SW3", "SW1"]
     filter: mapFilter
   };
 
@@ -70,13 +74,29 @@ const Viewer = ({ mapLayer, mapFilter, setMapFilter, mapFillColor, setMapFillCol
   //Hook
   const [hoveredFeature, sethoveredFeature] = useState({ feature: null });
 
+  const addProps = feature => {
+    if (feature) {
+      if (selectedFilter === "useRent") {
+        const district = findCorrectDistrict(feature.properties.name);
+        feature.properties.ave_rent = district.ave_rent;
+      } else if (selectedFilter === "usePrice") {
+        const district = findCorrectDistrict(feature.properties.name);
+        feature.properties.ave_rent = district.ave_price;
+      } else {
+        const district = findCorrectDistrict(feature.properties.name);
+        feature.properties.ave_rent = district.ave_yield;
+      }
+    }
+  };
+
   const onHover = event => {
     const {
       features,
       srcEvent: { offsetX, offsetY }
     } = event;
     const feature = features && features.find(f => f.layer.id === "data");
-
+    addProps(feature);
+    // console.log(feature.properties)
     sethoveredFeature({ feature, x: offsetX, y: offsetY });
   };
 
@@ -88,6 +108,21 @@ const Viewer = ({ mapLayer, mapFilter, setMapFilter, mapFillColor, setMapFillCol
           style={{ left: hoveredFeature.x, top: hoveredFeature.y }}
         >
           <div>Postcode: {hoveredFeature.feature.properties.name}</div>
+          {selectedFilter === "useRent" ? (
+            <div>
+              {"Average Rent: £" + hoveredFeature.feature.properties.ave_rent + "/month"}
+            </div>
+          ) : null}
+          {selectedFilter === "usePrice" ? (
+            <div>
+              {"Average price /sqft: £" + hoveredFeature.feature.properties.ave_rent}
+            </div>
+          ) : null}
+          {selectedFilter === "useYield" ? (
+            <div>
+              {"Average Yield:" + hoveredFeature.feature.properties.ave_rent + "%"}
+            </div>
+          ) : null}
         </div>
       )
     );

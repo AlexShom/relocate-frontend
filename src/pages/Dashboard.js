@@ -27,6 +27,9 @@ const Dashboard = props => {
   ]);
 
   //Helpers
+  const findCorrectDistrict = (name) => {
+    return allDistricts.find(district => district.postcode === name)
+  }
 
   const getMapLayer = () => {
     fetch(mapsAPI)
@@ -108,6 +111,8 @@ const Dashboard = props => {
                   mapFilter={mapFilter}
                   setMapFilter={setMapFilter}
                   mapLayer={mapLayer}
+                  selectedFilter={selectedFilter}
+                  findCorrectDistrict={findCorrectDistrict}
                 />
               </Container>
             </Container>
