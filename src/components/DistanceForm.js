@@ -1,14 +1,18 @@
-import React, { Fragment } from "react";
-import { Checkbox, Input } from "semantic-ui-react";
+import React, { Fragment, useState } from "react";
+import { Checkbox } from "semantic-ui-react";
+import WithCallbacks from "./DropdownComponent"
 
 const DistanceForm = props => {
+  const results = [{ key: "yo", text: "yoyo", value: "yoyoyo" }];
+
   return (
     <Fragment>
-      <div style={{paddingBottom: "10px"}}>
-      <Checkbox />
-      <h4 style={{ display: "inline" }}> Use commute time to filter</h4>
+      <div style={{ paddingBottom: "10px" }}>
+        <Checkbox />
+        <h4 style={{ display: "inline" }}> Use commute time to filter</h4>
       </div>
-      <Input inverted size="mini" icon='location arrow' iconPosition='left' placeholder='Postcode or address' />
+      <p>here</p>
+      {/* <WithCallbacks/> */}
     </Fragment>
   );
 };

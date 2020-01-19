@@ -75,6 +75,7 @@ const Dashboard = props => {
 
   return (
     <div className="backBoard">
+      {/* {console.log(process.env.REACT_APP_DISTANCE_API_KEY)} */}
       <Grid>
         <Grid.Row>
           <Grid.Column name="searchCriteria" width={6}>
