@@ -105,7 +105,7 @@ const Dashboard = props => {
       array = allDistricts.filter(district => district.ave_yield <= rentValue);
 
     let array2 = [...array];
-    if (useCommuteTime)
+    if (useCommuteTime && selectedWork)
       array2 = array.filter(district => district.travelTime <= travelDuration);
 
     const filteredArray = array2.map(district => district.postcode);
@@ -122,7 +122,7 @@ const Dashboard = props => {
 
   useEffect(() => {
     filterOutDistricts();
-  }, [selectedFilter, rentValue, travelDuration, useCommuteTime]);
+  }, [selectedFilter, selectedWork, rentValue, travelDuration, useCommuteTime]);
 
   useEffect(() => {
     getTimeMap();
@@ -184,7 +184,7 @@ const Dashboard = props => {
           </Grid.Row>
         </Grid>
       </div>
-      <Modal open={loadingFetch} onClose={loadingFetch} basic size="small">
+      <Modal open={loadingFetch} basic size="small">
         <Header textAlign="center" content="Loading Realtime Data" />
         <Modal.Content>
           <Loader active />
