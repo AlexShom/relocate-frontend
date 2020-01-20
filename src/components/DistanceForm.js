@@ -1,12 +1,18 @@
 import React, { Fragment, useState } from "react";
 import { Checkbox } from "semantic-ui-react";
 import DropdownComponent from "./DropdownComponent";
+import FilterCheckboxes from "./FilterCheckboxes";
+import ValueSliderDuration from "../smallComponents/ValueSliderDuration";
 
 const DistanceForm = ({
   useCommuteTime,
   setUseCommuteTime,
   setSelectedWork,
-  selectedWork
+  selectedWork,
+  setTransportType,
+  transportType,
+  travelDuration,
+  setTravelDuration
 }) => {
   return (
     <Fragment>
@@ -19,22 +25,34 @@ const DistanceForm = ({
       </div>
       {useCommuteTime && (
         <Fragment>
-          <div>
-            <Checkbox />
-            <h4 style={{ display: "inline" }}> Driving</h4>
-          </div>
-          <div>
-            <Checkbox />
-            <h4 style={{ display: "inline" }}> Cycling</h4>
-          </div>
-          <div style={{paddingBottom: "10px"}}>
-            <Checkbox />
-            <h4 style={{ display: "inline" }}> Public Transport</h4>
-          </div>
+          <FilterCheckboxes
+            selectedFilter={transportType}
+            setSelectedFilter={setTransportType}
+            message="Driving"
+            changeValue="useDriving"
+          />
+          <FilterCheckboxes
+            selectedFilter={transportType}
+            setSelectedFilter={setTransportType}
+            message="Cycling"
+            changeValue="useCycling"
+          />
+          <FilterCheckboxes
+            selectedFilter={transportType}
+            setSelectedFilter={setTransportType}
+            message="Public Transport"
+            changeValue="usePublicTransport"
+          />
           {selectedWork && <h4>{selectedWork.label}</h4>}
           <DropdownComponent
             setSelectedWork={setSelectedWork}
             selectedWork={selectedWork}
+          />
+          <ValueSliderDuration
+            value={travelDuration}
+            setValue={setTravelDuration}
+            maxValue={120}
+            minValue={0}
           />
         </Fragment>
       )}

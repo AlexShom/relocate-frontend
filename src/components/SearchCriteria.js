@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Grid } from "semantic-ui-react";
-import ValueSlider from "../smallComponents/ValueSlider.js.js";
+import ValueSlider from "../smallComponents/ValueSlider";
 import FilterCheckboxes from "./FilterCheckboxes";
 import DistanceForm from "./DistanceForm";
 
@@ -12,7 +12,11 @@ const SearchCriteria = ({
   useCommuteTime,
   setUseCommuteTime,
   selectedWork,
-  setSelectedWork
+  setSelectedWork,
+  setTransportType,
+  transportType,
+  travelDuration,
+  setTravelDuration
 }) => {
   const messageRent = "Use Average Rent per month to filter";
   const messagePrice = "Use Average Price per sqft to filter";
@@ -80,10 +84,14 @@ const SearchCriteria = ({
       <Grid.Column style={{ minWidth: "250px" }}>
         <div className="checkbox-box">
           <DistanceForm
+            travelDuration={travelDuration}
+            setTravelDuration={setTravelDuration}
             selectedWork={selectedWork}
             setSelectedWork={setSelectedWork}
             useCommuteTime={useCommuteTime}
             setUseCommuteTime={setUseCommuteTime}
+            setTransportType={setTransportType}
+            transportType={transportType}
           />
         </div>
       </Grid.Column>
