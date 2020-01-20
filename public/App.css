@@ -147,3 +147,7 @@ input {
   border-width: 2px;
   padding: 20px;
 }
+
+.selector {
+  color: black
+}

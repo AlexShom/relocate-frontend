@@ -1,18 +1,26 @@
 import React, { useState } from "react";
-import ReactMapGL, { FlyToInterpolator, Layer, Source } from "react-map-gl";
+import ReactMapGL, {
+  Marker,
+  FlyToInterpolator,
+  Layer,
+  Source
+} from "react-map-gl";
+import Pin from "../smallComponents/Pin";
 
 //Mapbox Token
 //REMEMBER TO SET TO ENV VARIABLE IN RAILS CREDENTIALS
 
-const TOKEN =
-  "pk.eyJ1IjoiYXNob20iLCJhIjoiY2s1NDN0bHc3MGUyZTNubHp1MnpmYmZyNiJ9.-fQZdkNM7ewNZqnDQag12g";
+const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const Viewer = ({
   mapLayer,
   mapFilter,
   mapFillColor,
   selectedFilter,
-  findCorrectDistrict
+  findCorrectDistrict,
+  workPoint,
+  transportType,
+  useCommuteTime
 }) => {
   //map control//
 
@@ -82,9 +90,20 @@ const Viewer = ({
       } else if (selectedFilter === "usePrice") {
         const district = findCorrectDistrict(feature.properties.name);
         feature.properties.ave_rent = district.ave_price;
-      } else {
+      } else if (selectedFilter === "useYield") {
         const district = findCorrectDistrict(feature.properties.name);
         feature.properties.ave_rent = district.ave_yield;
+      }
+
+      if (transportType === "useDriving") {
+        const district = findCorrectDistrict(feature.properties.name);
+        feature.properties.travel_time = district.travelTime;
+      } else if (transportType === "useCycling") {
+        const district = findCorrectDistrict(feature.properties.name);
+        feature.properties.travel_time = district.travelTime;
+      } else if (transportType === "usePublicTransport") {
+        const district = findCorrectDistrict(feature.properties.name);
+        feature.properties.travel_time = district.travelTime;
       }
     }
   };
@@ -127,6 +146,27 @@ const Viewer = ({
                 "%"}
             </div>
           ) : null}
+          {transportType === "useDriving" && useCommuteTime ? (
+            <div>
+              {"Average Driving Commute Time: " +
+                hoveredFeature.feature.properties.travel_time +
+                "minutes"}
+            </div>
+          ) : null}
+          {transportType === "useCycling" ? (
+            <div>
+              {"Average Cycling Commute Time: " +
+                hoveredFeature.feature.properties.travel_time +
+                "minutes"}
+            </div>
+          ) : null}
+          {transportType === "usePublicTransport" ? (
+            <div>
+              {"Average Public Transport Commute Time: " +
+                hoveredFeature.feature.properties.travel_time +
+                "minutes"}
+            </div>
+          ) : null}
         </div>
       )
     );
@@ -151,7 +191,17 @@ const Viewer = ({
         <Source type="geojson" data={mapLayer}>
           <Layer {...postcodeLayer} />
         </Source>
+
         {tooltip()}
+        {workPoint.geometry && (
+          <Marker
+            longitude={workPoint.geometry.coordinates[0]}
+            latitude={workPoint.geometry.coordinates[1]}
+            anchor="bottom"
+          >
+            <Pin size={20} />
+          </Marker>
+        )}
       </ReactMapGL>
     </div>
   );

@@ -2,18 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 
-const ValueSlider = ({
-  value,
-  setValue,
-  maxValue,
-  minValue,
-  step,
-  usePercent
-}) => {
-  const percentRentValue = num => {
-    return Math.round(num * 10) / 10;
-  };
-
+const ValueSliderDuration = ({ value, setValue, maxValue, minValue, step }) => {
   useEffect(() => {
     setValue(0);
   }, [maxValue]);
@@ -22,7 +11,7 @@ const ValueSlider = ({
     <Fragment>
       <div className="checkbox-box">
         <div className="slider-box">
-          <h5>{usePercent ? "Filter in %:" : "Filter in GBP:"}</h5>
+          <h5>Time willing to commute: {value} minutes</h5>
         </div>
         <br></br>
         <br></br>
@@ -32,9 +21,9 @@ const ValueSlider = ({
           step={step}
           maxValue={maxValue}
           minValue={minValue}
-          value={percentRentValue(value)}
+          value={value}
           onChange={rent => {
-            let newRent = percentRentValue(rent);
+            let newRent = rent;
             setValue(newRent);
           }}
         />
@@ -42,4 +31,4 @@ const ValueSlider = ({
     </Fragment>
   );
 };
-export default ValueSlider;
+export default ValueSliderDuration;

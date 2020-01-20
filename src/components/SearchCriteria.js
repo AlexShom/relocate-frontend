@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Grid } from "semantic-ui-react";
-import ValueSlider from "../smallComponents/ValueSlider.js.js";
+import ValueSlider from "../smallComponents/ValueSlider";
 import FilterCheckboxes from "./FilterCheckboxes";
 import DistanceForm from "./DistanceForm";
 
@@ -8,7 +8,15 @@ const SearchCriteria = ({
   rentValue,
   setRentValue,
   selectedFilter,
-  setSelectedFilter
+  setSelectedFilter,
+  useCommuteTime,
+  setUseCommuteTime,
+  selectedWork,
+  setSelectedWork,
+  setTransportType,
+  transportType,
+  travelDuration,
+  setTravelDuration
 }) => {
   const messageRent = "Use Average Rent per month to filter";
   const messagePrice = "Use Average Price per sqft to filter";
@@ -49,7 +57,7 @@ const SearchCriteria = ({
 
   return (
     <Grid>
-      <Grid.Column style={{ minWidth: "200px" }}>
+      <Grid.Column style={{ minWidth: "250px" }}>
         <div className="checkbox-box">
           <FilterCheckboxes
             selectedFilter={selectedFilter}
@@ -70,12 +78,21 @@ const SearchCriteria = ({
             changeValue="useYield"
           />
         </div>
+        {sliderChoice()}
       </Grid.Column>
 
       <Grid.Column style={{ minWidth: "250px" }}>
-        {sliderChoice()}
         <div className="checkbox-box">
-          <DistanceForm />
+          <DistanceForm
+            travelDuration={travelDuration}
+            setTravelDuration={setTravelDuration}
+            selectedWork={selectedWork}
+            setSelectedWork={setSelectedWork}
+            useCommuteTime={useCommuteTime}
+            setUseCommuteTime={setUseCommuteTime}
+            setTransportType={setTransportType}
+            transportType={transportType}
+          />
         </div>
       </Grid.Column>
     </Grid>
