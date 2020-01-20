@@ -22,7 +22,7 @@ const ValueSlider = ({
     <Fragment>
       <div className="checkbox-box">
         <div className="slider-box">
-          <h5>{usePercent ? "Filter in %:" : "Filter in GBP:"}</h5>
+  <h5>{usePercent ? "Filter in %: " : "Filter in GBP: "}{value}</h5>
         </div>
         <br></br>
         <br></br>

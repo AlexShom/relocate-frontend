@@ -8,7 +8,11 @@ const SearchCriteria = ({
   rentValue,
   setRentValue,
   selectedFilter,
-  setSelectedFilter
+  setSelectedFilter,
+  useCommuteTime,
+  setUseCommuteTime,
+  selectedWork,
+  setSelectedWork
 }) => {
   const messageRent = "Use Average Rent per month to filter";
   const messagePrice = "Use Average Price per sqft to filter";
@@ -75,7 +79,12 @@ const SearchCriteria = ({
       <Grid.Column style={{ minWidth: "250px" }}>
         {sliderChoice()}
         <div className="checkbox-box">
-          <DistanceForm />
+          <DistanceForm
+            selectedWork={selectedWork}
+            setSelectedWork={setSelectedWork}
+            useCommuteTime={useCommuteTime}
+            setUseCommuteTime={setUseCommuteTime}
+          />
         </div>
       </Grid.Column>
     </Grid>

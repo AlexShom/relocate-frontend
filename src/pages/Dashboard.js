@@ -11,6 +11,8 @@ const Dashboard = props => {
   const [rentValue, setRentValue] = useState(0);
   const [mapLayer, setMapLayer] = useState(null);
   const [allDistricts, setAllDistricts] = useState([]);
+  const [useCommuteTime, setUseCommuteTime] = useState(false);
+  const [selectedWork, setSelectedWork] = useState(null);
 
   //Data driven styling
 
@@ -24,6 +26,7 @@ const Dashboard = props => {
   ]);
 
   //Helpers
+
   const findCorrectDistrict = name => {
     return allDistricts.find(district => district.postcode === name);
   };
@@ -75,7 +78,6 @@ const Dashboard = props => {
 
   return (
     <div className="backBoard">
-      {/* {console.log(process.env.REACT_APP_DISTANCE_API_KEY)} */}
       <Grid>
         <Grid.Row>
           <Grid.Column name="searchCriteria" width={6}>
@@ -86,6 +88,10 @@ const Dashboard = props => {
                   setRentValue={setRentValue}
                   selectedFilter={selectedFilter}
                   setSelectedFilter={setSelectedFilter}
+                  useCommuteTime={useCommuteTime}
+                  setUseCommuteTime={setUseCommuteTime}
+                  selectedWork={selectedWork}
+                  setSelectedWork={setSelectedWork}
                 />
               </Container>
             </Container>
@@ -110,6 +116,7 @@ const Dashboard = props => {
                   mapLayer={mapLayer}
                   selectedFilter={selectedFilter}
                   findCorrectDistrict={findCorrectDistrict}
+                  workPoint={selectedWork ? selectedWork.value : {}}
                 />
               </Container>
             </Container>

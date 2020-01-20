@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import ReactMapGL, { FlyToInterpolator, Layer, Source } from "react-map-gl";
+import ReactMapGL, {
+  Marker,
+  FlyToInterpolator,
+  Layer,
+  Source
+} from "react-map-gl";
 
 //Mapbox Token
 //REMEMBER TO SET TO ENV VARIABLE IN RAILS CREDENTIALS
 
-const TOKEN =
-  "pk.eyJ1IjoiYXNob20iLCJhIjoiY2s1NDN0bHc3MGUyZTNubHp1MnpmYmZyNiJ9.-fQZdkNM7ewNZqnDQag12g";
+const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const Viewer = ({
   mapLayer,
   mapFilter,
   mapFillColor,
   selectedFilter,
-  findCorrectDistrict
+  findCorrectDistrict,
+  workPoint
 }) => {
   //map control//
 
@@ -136,6 +141,7 @@ const Viewer = ({
 
   return (
     <div id="map">
+      {console.log(workPoint)}
       <button onClick={handleCenter}>Center on London</button>
       <button onClick={handleCenterOnUS}>Center on usa</button>
       <ReactMapGL
@@ -151,7 +157,17 @@ const Viewer = ({
         <Source type="geojson" data={mapLayer}>
           <Layer {...postcodeLayer} />
         </Source>
+
         {tooltip()}
+        {workPoint.geometry && <Marker
+          latitude={workPoint.geometry.coordinates[1]}
+          longitude={workPoint.geometry.coordinates[0]}
+          offsetLeft={-20}
+          offsetTop={-10}
+        >
+          <div><img style={{height: "40px"}}src="images/pin.png"></img></div>
+        </Marker>}
+        
       </ReactMapGL>
     </div>
   );

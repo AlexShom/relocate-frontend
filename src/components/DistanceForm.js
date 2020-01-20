@@ -1,18 +1,31 @@
 import React, { Fragment, useState } from "react";
 import { Checkbox } from "semantic-ui-react";
-import WithCallbacks from "./DropdownComponent"
+import DropdownComponent from "./DropdownComponent";
 
-const DistanceForm = props => {
-  const results = [{ key: "yo", text: "yoyo", value: "yoyoyo" }];
-
+const DistanceForm = ({
+  useCommuteTime,
+  setUseCommuteTime,
+  setSelectedWork,
+  selectedWork
+}) => {
   return (
     <Fragment>
       <div style={{ paddingBottom: "10px" }}>
-        <Checkbox />
+        <Checkbox
+          checked={useCommuteTime}
+          onChange={() => setUseCommuteTime(!useCommuteTime)}
+        />
         <h4 style={{ display: "inline" }}> Use commute time to filter</h4>
       </div>
-      <p>here</p>
-      {/* <WithCallbacks/> */}
+      {useCommuteTime && (
+        <Fragment>
+          {selectedWork && <h4>{selectedWork.label}</h4>}
+          <DropdownComponent
+            setSelectedWork={setSelectedWork}
+            selectedWork={selectedWork}
+          />
+        </Fragment>
+      )}
     </Fragment>
   );
 };
