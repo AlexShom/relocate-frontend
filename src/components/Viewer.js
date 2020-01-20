@@ -141,7 +141,6 @@ const Viewer = ({
 
   return (
     <div id="map">
-      {console.log(workPoint)}
       <button onClick={handleCenter}>Center on London</button>
       <button onClick={handleCenterOnUS}>Center on usa</button>
       <ReactMapGL
@@ -159,15 +158,16 @@ const Viewer = ({
         </Source>
 
         {tooltip()}
-        {workPoint.geometry && <Marker
-          latitude={workPoint.geometry.coordinates[1]}
-          longitude={workPoint.geometry.coordinates[0]}
-          offsetLeft={-20}
-          offsetTop={-10}
-        >
-          <div><img style={{height: "40px"}}src="images/pin.png"></img></div>
-        </Marker>}
-        
+        {workPoint.geometry && (
+          <Marker
+            latitude={workPoint.geometry.coordinates[1]}
+            longitude={workPoint.geometry.coordinates[0]}
+          >
+            <div>
+              <img style={{ height: "40px" }} src="images/pin.png"></img>
+            </div>
+          </Marker>
+        )}
       </ReactMapGL>
     </div>
   );

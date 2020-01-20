@@ -48,6 +48,10 @@ const Dashboard = props => {
       .then(districts => setMapFilter(["in", "name", ...districts]));
   };
 
+  const getTimeMap = () => {
+    console.log()
+  }
+
   // filter functions
 
   const filterOutDistricts = () => {
@@ -74,6 +78,9 @@ const Dashboard = props => {
     filterOutDistricts();
   }, [selectedFilter, rentValue]);
 
+  useEffect(() => {
+    getTimeMap()
+  },[selectedWork])
   //Render
 
   return (
@@ -106,6 +113,7 @@ const Dashboard = props => {
             <Container className="gen-box">
               <Container className="gen-box gen-bubble">
                 Map nav buttons
+                <button onClick={getTimeMap}>Test time</button>
               </Container>
               <Container className="gen-box">
                 <Viewer

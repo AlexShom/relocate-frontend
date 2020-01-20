@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AsyncSelect from "react-select/async";
-import getSearchResults from "../adapters/DistanceAPI";
+import {getSearchResults} from "../adapters/DistanceAPI";
 
 const DropdownComponent = ({ setSelectedWork, selectedWork }) => {
   const [inputValue, setInputValue] = useState("");

@@ -1,6 +1,6 @@
 import { distanceAPI } from "./API";
 
-const getSearchResults = input => {
+export const getSearchResults = input => {
   const configObj = {
     method: "GET",
     credentials: "same-origin",
@@ -19,5 +19,3 @@ const getSearchResults = input => {
     configObj
   ).then(resp => resp.json());
 };
-
-export default getSearchResults;

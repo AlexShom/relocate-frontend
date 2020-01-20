@@ -19,6 +19,18 @@ const DistanceForm = ({
       </div>
       {useCommuteTime && (
         <Fragment>
+          <div>
+            <Checkbox />
+            <h4 style={{ display: "inline" }}> Driving</h4>
+          </div>
+          <div>
+            <Checkbox />
+            <h4 style={{ display: "inline" }}> Cycling</h4>
+          </div>
+          <div style={{paddingBottom: "10px"}}>
+            <Checkbox />
+            <h4 style={{ display: "inline" }}> Public Transport</h4>
+          </div>
           {selectedWork && <h4>{selectedWork.label}</h4>}
           <DropdownComponent
             setSelectedWork={setSelectedWork}

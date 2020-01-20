@@ -53,7 +53,7 @@ const SearchCriteria = ({
 
   return (
     <Grid>
-      <Grid.Column style={{ minWidth: "200px" }}>
+      <Grid.Column style={{ minWidth: "250px" }}>
         <div className="checkbox-box">
           <FilterCheckboxes
             selectedFilter={selectedFilter}
@@ -74,10 +74,10 @@ const SearchCriteria = ({
             changeValue="useYield"
           />
         </div>
+        {sliderChoice()}
       </Grid.Column>
 
       <Grid.Column style={{ minWidth: "250px" }}>
-        {sliderChoice()}
         <div className="checkbox-box">
           <DistanceForm
             selectedWork={selectedWork}
