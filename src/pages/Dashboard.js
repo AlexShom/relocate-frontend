@@ -64,31 +64,27 @@ const Dashboard = props => {
       setLoadingFetch(true);
       let newAllArray = [...allDistricts];
       getDistanceTime(selectedWork, transportType)
-        .then(
-          json =>
-            json.results[0].districts.map(dist => {
-              newAllArray.map(item => {
-                if (item.postcode.toUpperCase() === dist.code.toUpperCase()) {
-                  item.travelTime = Math.ceil(
-                    dist.properties.travel_time_reachable.mean / 60
-                  );
-                } else if (
-                  dist.code.toUpperCase().includes(item.postcode.toUpperCase())
-                ) {
-                  item.travelTime = Math.ceil(
-                    dist.properties.travel_time_reachable.mean / 60
-                  );
-                }
-              });
-              //
-            })
-          // setAllDistricts(newAllArray),
-          // console.log(transportType),
+        .then(json =>
+          json.results[0].districts.map(dist => {
+            newAllArray.map(item => {
+              if (item.postcode.toUpperCase() === dist.code.toUpperCase()) {
+                item.travelTime = Math.ceil(
+                  dist.properties.travel_time_reachable.mean / 60
+                );
+              } else if (
+                dist.code.toUpperCase().includes(item.postcode.toUpperCase())
+              ) {
+                item.travelTime = Math.ceil(
+                  dist.properties.travel_time_reachable.mean / 60
+                );
+              }
+            });
+            //
+          })
         )
         .then(() => {
           setAllDistricts(newAllArray);
           setLoadingFetch(false);
-          console.log("done");
         });
     }
   };

@@ -48,12 +48,14 @@ const DistanceForm = ({
             setSelectedWork={setSelectedWork}
             selectedWork={selectedWork}
           />
-          <ValueSliderDuration
-            value={travelDuration}
-            setValue={setTravelDuration}
-            maxValue={120}
-            minValue={0}
-          />
+          {selectedWork && (
+            <ValueSliderDuration
+              value={travelDuration}
+              setValue={setTravelDuration}
+              maxValue={120}
+              minValue={0}
+            />
+          )}
         </Fragment>
       )}
     </Fragment>

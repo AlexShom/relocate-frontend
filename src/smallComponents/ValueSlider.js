@@ -15,7 +15,7 @@ const ValueSlider = ({
   };
 
   useEffect(() => {
-    setValue(0);
+    setValue((maxValue+minValue)/2);
   }, [maxValue]);
 
   return (

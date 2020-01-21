@@ -29,7 +29,7 @@ const SearchCriteria = ({
           value={rentValue}
           setValue={setRentValue}
           maxValue={4000}
-          minValue={0}
+          minValue={1100}
         />
       );
     } else if (selectedFilter === "usePrice") {
@@ -38,7 +38,7 @@ const SearchCriteria = ({
           value={rentValue}
           setValue={setRentValue}
           maxValue={2000}
-          minValue={0}
+          minValue={346}
         />
       );
     } else {
@@ -48,7 +48,7 @@ const SearchCriteria = ({
           value={rentValue}
           setValue={setRentValue}
           maxValue={8.1}
-          minValue={0}
+          minValue={1.9}
           step={0.1}
         />
       );
