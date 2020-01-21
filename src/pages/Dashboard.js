@@ -1,12 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import {
-  Grid,
-  Container,
-  Modal,
-  Header,
-  Loader,
-  Dimmer
-} from "semantic-ui-react";
+import { Grid, Container, Modal, Header, Loader } from "semantic-ui-react";
 import Viewer from "../components/Viewer";
 import SearchCriteria from "../components/SearchCriteria";
 import { mapsAPI, postcodesAPI } from "../adapters/API";
@@ -50,11 +43,31 @@ const Dashboard = props => {
     "#096925"
   ]);
 
-  //Helpers
+  //Misc Helpers
 
   const findCorrectDistrict = name => {
     return allDistricts.find(district => district.postcode === name);
   };
+
+  //Sorters
+
+  const districtSorter = () => {
+    let term = "";
+    if (selectedFilter === "useRent") term = "ave_rent";
+    if (selectedFilter === "usePrice") term = "ave_price";
+    if (selectedFilter === "useYield") term = "ave_yield";
+    console.log(allDistricts.sort(sortWithTerm(term)));
+  };
+
+  const sortBy = (key, order = "asc") => (a, b) => {
+    if (a[key] < b[key]) return order === "asc" ? -1 : 1;
+    if (a[key] > b[key]) return order === "asc" ? 1 : -1;
+    return 0;
+  };
+
+  const sortWithTerm = term => sortBy(term);
+
+  //Getters
 
   const getMapLayer = () => {
     fetch(mapsAPI)
@@ -106,7 +119,7 @@ const Dashboard = props => {
     }
   };
 
-  // filter functions
+  // filter function
 
   const filterOutDistricts = () => {
     let array = null;
