@@ -126,7 +126,7 @@ const SearchCriteria = ({
                   setRankingBooleans({ ...rankingBooleans, crimeRate })
                 }
                 checked={rankingBooleans.crimeRate}
-                description="Crime rate ranked form least to most incidents"
+                description="Crime rate ranked from least to most incidents"
               />
               <BooleanCheckbox
                 message="Education"

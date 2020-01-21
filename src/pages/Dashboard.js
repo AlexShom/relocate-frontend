@@ -49,23 +49,90 @@ const Dashboard = props => {
     return allDistricts.find(district => district.postcode === name);
   };
 
-  //Sorters
+  //Ranker
 
   const districtSorter = () => {
-    let term = "";
-    if (selectedFilter === "useRent") term = "ave_rent";
-    if (selectedFilter === "usePrice") term = "ave_price";
-    if (selectedFilter === "useYield") term = "ave_yield";
-    console.log(allDistricts.sort(sortWithTerm(term)));
+    let array = [...allDistricts];
+
+    array.forEach(district => (district.rankingScore = 0));
+
+    if (rankingBooleans.crimeRate) {
+      console.log("hit crime");
+      let sortedArray = array.sort(sortWithAttribute("crime_rate"));
+      sortedArray.forEach(
+        district => (district.rankingScore += sortedArray.indexOf(district))
+      );
+    }
+    if (rankingBooleans.education) {
+      console.log("hit edu");
+      let sortedArray = array.sort(sortWithAttribute("education", "DESC"));
+      sortedArray.forEach(
+        district => (district.rankingScore += sortedArray.indexOf(district))
+      );
+    }
+    if (rankingBooleans.availability) {
+      console.log("hit availability");
+      let sortedArray = array.sort(sortWithAttribute("availability", "DESC"));
+      sortedArray.forEach(
+        district => (district.rankingScore += sortedArray.indexOf(district))
+      );
+    }
+    if (rankingBooleans.socialGrade) {
+      console.log("hit grade");
+      if (rankSortOrder.socialGrade === "ASC") {
+        let sortedArray = array.sort(sortWithAttribute("social_grade"));
+        sortedArray.forEach(
+          district => (district.rankingScore += sortedArray.indexOf(district))
+        );
+      } else {
+        let sortedArray = array.sort(sortWithAttribute("social_grade", "DESC"));
+        sortedArray.forEach(
+          district => (district.rankingScore += sortedArray.indexOf(district))
+        );
+      }
+    }
+    if (rankingBooleans.averageBedrooms) {
+      console.log("hit bed");
+      if (rankSortOrder.averageBedrooms === "ASC") {
+        let sortedArray = array.sort(sortWithAttribute("average_bedrooms"));
+        sortedArray.forEach(
+          district => (district.rankingScore += sortedArray.indexOf(district))
+        );
+      } else {
+        let sortedArray = array.sort(
+          sortWithAttribute("average_bedrooms", "DESC")
+        );
+        sortedArray.forEach(
+          district => (district.rankingScore += sortedArray.indexOf(district))
+        );
+      }
+    }
+    if (rankingBooleans.population) {
+      console.log("hit pop");
+      if (rankSortOrder.population === "ASC") {
+        let sortedArray = array.sort(sortWithAttribute("population"));
+        sortedArray.forEach(
+          district => (district.rankingScore += sortedArray.indexOf(district))
+        );
+      } else {
+        let sortedArray = array.sort(sortWithAttribute("population", "DESC"));
+        sortedArray.forEach(
+          district => (district.rankingScore += sortedArray.indexOf(district))
+        );
+      }
+    }
+    return array.sort(sortWithAttribute("rankingScore"));
   };
 
-  const sortBy = (key, order = "asc") => (a, b) => {
-    if (a[key] < b[key]) return order === "asc" ? -1 : 1;
-    if (a[key] > b[key]) return order === "asc" ? 1 : -1;
+  //Sort helpers
+
+  const sortBy = (key, order = "ASC") => (a, b) => {
+    if (a[key] < b[key]) return order === "ASC" ? -1 : 1;
+    if (a[key] > b[key]) return order === "ASC" ? 1 : -1;
     return 0;
   };
 
-  const sortWithTerm = term => sortBy(term);
+  const sortWithAttribute = (term, order) => sortBy(term, order);
 
   //Getters
 
@@ -196,6 +263,7 @@ const Dashboard = props => {
               <Container className="gen-box">
                 <Container className="gen-box gen-bubble">
                   Map nav buttons
+                  <button onClick={districtSorter}>TESTER</button>
                 </Container>
                 <Container className="gen-box">
                   <Viewer
