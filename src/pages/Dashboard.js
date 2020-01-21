@@ -30,10 +30,14 @@ const Dashboard = props => {
     education: false,
     availability: false,
     socialGrade: false,
-    AverageBedrooms: false,
-    populations: false
+    averageBedrooms: false,
+    population: false
   });
-  const [rankSortOrder, setRankSortOrder] = useState("ASC");
+  const [rankSortOrder, setRankSortOrder] = useState({
+    socialGrade: "ASC",
+    averageBedrooms: "ASC",
+    population: "ASC"
+  });
 
   //Data driven styling
 
@@ -163,6 +167,8 @@ const Dashboard = props => {
                     setUseRanking={setUseRanking}
                     rankingBooleans={rankingBooleans}
                     setRankingBooleans={setRankingBooleans}
+                    rankSortOrder={rankSortOrder}
+                    setRankSortOrder={setRankSortOrder}
                   />
                 </Container>
               </Container>

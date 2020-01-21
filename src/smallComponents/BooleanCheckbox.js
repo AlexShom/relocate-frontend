@@ -1,13 +1,19 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Checkbox } from "semantic-ui-react";
 
-const BooleanCheckbox = ({ checked, setter, getter, message, description }) => {
+const BooleanCheckbox = ({
+  toggle,
+  checked,
+  setter,
+  getter,
+  message,
+  description
+}) => {
   return (
     <div style={{ display: "inline-blocks", color: "white" }}>
       <span style={{ paddingTop: "10px" }}>
         <Checkbox
-          toggle
-          size="tiny"
+          toggle={toggle}
           checked={checked}
           onChange={() => setter(!getter)}
         />

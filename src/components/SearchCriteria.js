@@ -4,6 +4,7 @@ import ValueSlider from "../smallComponents/ValueSlider";
 import FilterCheckboxes from "./FilterCheckboxes";
 import DistanceForm from "./DistanceForm";
 import BooleanCheckbox from "../smallComponents/BooleanCheckbox";
+import OrderCheckBoxes from "../smallComponents/orderCheckBoxes";
 
 const SearchCriteria = ({
   rentValue,
@@ -21,7 +22,9 @@ const SearchCriteria = ({
   useRanking,
   setUseRanking,
   rankingBooleans,
-  setRankingBooleans
+  setRankingBooleans,
+  rankSortOrder,
+  setRankSortOrder
 }) => {
   const messageRent = "Use Average Rent per month to filter";
   const messagePrice = "Use Average Price per sqft to filter";
@@ -105,6 +108,7 @@ const SearchCriteria = ({
       <div className="checkbox-box">
         <div style={{ paddingBottom: "5px" }}>
           <BooleanCheckbox
+            toggle={true}
             message="Rank options"
             getter={useRanking}
             setter={setUseRanking}
@@ -117,48 +121,81 @@ const SearchCriteria = ({
             <Grid.Column width={8}>
               <BooleanCheckbox
                 message="Crime Rate"
-                getter={rankingBooleans}
-                setter={setRankingBooleans}
-                checked={rankingBooleans}
+                getter={rankingBooleans.crimeRate}
+                setter={crimeRate =>
+                  setRankingBooleans({ ...rankingBooleans, crimeRate })
+                }
+                checked={rankingBooleans.crimeRate}
                 description="Crime rate ranked form least to most incidents"
               />
               <BooleanCheckbox
                 message="Education"
-                getter={rankingBooleans}
-                setter={setRankingBooleans}
-                checked={rankingBooleans}
+                getter={rankingBooleans.education}
+                setter={education =>
+                  setRankingBooleans({ ...rankingBooleans, education })
+                }
+                checked={rankingBooleans.education}
                 description="Area university education score (number of degree educated) from highest to lowest"
               />
 
               <BooleanCheckbox
                 message="Availability"
-                getter={rankingBooleans}
-                setter={setRankingBooleans}
-                checked={rankingBooleans}
+                getter={rankingBooleans.availability}
+                setter={availability =>
+                  setRankingBooleans({ ...rankingBooleans, availability })
+                }
+                checked={rankingBooleans.availability}
                 description="Ranked according to the average number of sales per month from most to least"
               />
             </Grid.Column>
             <Grid.Column width={8}>
               <BooleanCheckbox
                 message="Average bedrooms"
-                getter={rankingBooleans}
-                setter={setRankingBooleans}
-                checked={rankingBooleans}
+                getter={rankingBooleans.averageBedrooms}
+                setter={averageBedrooms =>
+                  setRankingBooleans({ ...rankingBooleans, averageBedrooms })
+                }
+                checked={rankingBooleans.averageBedrooms}
                 description="Average number of bedrooms per house in the  postcode district"
+              />
+              <OrderCheckBoxes
+                rKey="averageBedrooms"
+                rankSortOrder={rankSortOrder}
+                setRankSortOrder={averageBedrooms =>
+                  setRankSortOrder({ ...rankSortOrder, averageBedrooms })
+                }
               />
               <BooleanCheckbox
                 message="Population Density"
-                getter={rankingBooleans}
-                setter={setRankingBooleans}
-                checked={rankingBooleans}
+                getter={rankingBooleans.population}
+                setter={population =>
+                  setRankingBooleans({ ...rankingBooleans, population })
+                }
+                checked={rankingBooleans.population}
                 description="Average population in the postcode district"
+              />
+              <OrderCheckBoxes
+                rKey="population"
+                rankSortOrder={rankSortOrder}
+                setRankSortOrder={population =>
+                  setRankSortOrder({ ...rankSortOrder, population })
+                }
               />
               <BooleanCheckbox
                 message="Social Grade AB"
-                getter={rankingBooleans}
-                setter={setRankingBooleans}
-                checked={rankingBooleans}
+                getter={rankingBooleans.socialGrade}
+                setter={socialGrade =>
+                  setRankingBooleans({ ...rankingBooleans, socialGrade })
+                }
+                checked={rankingBooleans.socialGrade}
                 description="Ranked by NRS social grade"
+              />
+              <OrderCheckBoxes
+                rKey="socialGrade"
+                rankSortOrder={rankSortOrder}
+                setRankSortOrder={socialGrade =>
+                  setRankSortOrder({ ...rankSortOrder, socialGrade })
+                }
               />
             </Grid.Column>
           </Grid>
