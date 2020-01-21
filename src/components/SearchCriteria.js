@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { Grid } from "semantic-ui-react";
 import ValueSlider from "../smallComponents/ValueSlider";
 import FilterCheckboxes from "./FilterCheckboxes";
 import DistanceForm from "./DistanceForm";
+import BooleanCheckbox from "../smallComponents/BooleanCheckbox";
 
 const SearchCriteria = ({
   rentValue,
@@ -16,7 +17,11 @@ const SearchCriteria = ({
   setTransportType,
   transportType,
   travelDuration,
-  setTravelDuration
+  setTravelDuration,
+  useRanking,
+  setUseRanking,
+  rankingBooleans,
+  setRankingBooleans
 }) => {
   const messageRent = "Use Average Rent per month to filter";
   const messagePrice = "Use Average Price per sqft to filter";
@@ -56,46 +61,110 @@ const SearchCriteria = ({
   };
 
   return (
-    <Grid>
-      <Grid.Column style={{ minWidth: "250px" }}>
-        <div className="checkbox-box">
-          <FilterCheckboxes
-            selectedFilter={selectedFilter}
-            setSelectedFilter={setSelectedFilter}
-            message={messageRent}
-            changeValue="useRent"
-          />
-          <FilterCheckboxes
-            selectedFilter={selectedFilter}
-            setSelectedFilter={setSelectedFilter}
-            message={messagePrice}
-            changeValue="usePrice"
-          />
-          <FilterCheckboxes
-            selectedFilter={selectedFilter}
-            setSelectedFilter={setSelectedFilter}
-            message={messageYield}
-            changeValue="useYield"
-          />
-        </div>
-        {sliderChoice()}
-      </Grid.Column>
+    <Fragment>
+      <Grid>
+        <Grid.Column style={{ minWidth: "250px" }}>
+          <div className="checkbox-box">
+            <FilterCheckboxes
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
+              message={messageRent}
+              changeValue="useRent"
+            />
+            <FilterCheckboxes
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
+              message={messagePrice}
+              changeValue="usePrice"
+            />
+            <FilterCheckboxes
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
+              message={messageYield}
+              changeValue="useYield"
+            />
+          </div>
+          {sliderChoice()}
+        </Grid.Column>
 
-      <Grid.Column style={{ minWidth: "250px" }}>
-        <div className="checkbox-box">
-          <DistanceForm
-            travelDuration={travelDuration}
-            setTravelDuration={setTravelDuration}
-            selectedWork={selectedWork}
-            setSelectedWork={setSelectedWork}
-            useCommuteTime={useCommuteTime}
-            setUseCommuteTime={setUseCommuteTime}
-            setTransportType={setTransportType}
-            transportType={transportType}
+        <Grid.Column style={{ minWidth: "250px" }}>
+          <div className="checkbox-box">
+            <DistanceForm
+              travelDuration={travelDuration}
+              setTravelDuration={setTravelDuration}
+              selectedWork={selectedWork}
+              setSelectedWork={setSelectedWork}
+              useCommuteTime={useCommuteTime}
+              setUseCommuteTime={setUseCommuteTime}
+              setTransportType={setTransportType}
+              transportType={transportType}
+            />
+          </div>
+        </Grid.Column>
+      </Grid>
+      <div className="checkbox-box">
+        <div style={{ paddingBottom: "5px" }}>
+          <BooleanCheckbox
+            message="Rank options"
+            getter={useRanking}
+            setter={setUseRanking}
+            checked={useRanking}
+            description="Rank each postcode from best to worst by selected criteria"
           />
         </div>
-      </Grid.Column>
-    </Grid>
+        {useRanking && (
+          <Grid>
+            <Grid.Column width={8}>
+              <BooleanCheckbox
+                message="Crime Rate"
+                getter={rankingBooleans}
+                setter={setRankingBooleans}
+                checked={rankingBooleans}
+                description="Crime rate ranked form least to most incidents"
+              />
+              <BooleanCheckbox
+                message="Education"
+                getter={rankingBooleans}
+                setter={setRankingBooleans}
+                checked={rankingBooleans}
+                description="Area university education score (number of degree educated) from highest to lowest"
+              />
+
+              <BooleanCheckbox
+                message="Availability"
+                getter={rankingBooleans}
+                setter={setRankingBooleans}
+                checked={rankingBooleans}
+                description="Ranked according to the average number of sales per month from most to least"
+              />
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <BooleanCheckbox
+                message="Average bedrooms"
+                getter={rankingBooleans}
+                setter={setRankingBooleans}
+                checked={rankingBooleans}
+                description="Average number of bedrooms per house in the  postcode district"
+              />
+              <BooleanCheckbox
+                message="Population Density"
+                getter={rankingBooleans}
+                setter={setRankingBooleans}
+                checked={rankingBooleans}
+                description="Average population in the postcode district"
+              />
+              <BooleanCheckbox
+                message="Social Grade AB"
+                getter={rankingBooleans}
+                setter={setRankingBooleans}
+                checked={rankingBooleans}
+                description="Ranked by NRS social grade"
+              />
+            </Grid.Column>
+          </Grid>
+        )}
+      </div>
+    </Fragment>
   );
 };
 

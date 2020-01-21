@@ -24,10 +24,20 @@ const Dashboard = props => {
   const [transportType, setTransportType] = useState("useDriving");
   const [travelDuration, setTravelDuration] = useState(0);
   const [loadingFetch, setLoadingFetch] = useState(false);
+  const [useRanking, setUseRanking] = useState(false);
+  const [rankingBooleans, setRankingBooleans] = useState({
+    crimeRate: false,
+    education: false,
+    availability: false,
+    socialGrade: false,
+    AverageBedrooms: false,
+    populations: false
+  });
+  const [rankSortOrder, setRankSortOrder] = useState("ASC");
 
   //Data driven styling
 
-  const [mapFilter, setMapFilter] = useState(["has", "name"]);
+  const [mapFilter, setMapFilter] = useState([]);
   const [mapFillColor, setMapFillColor] = useState([
     "match",
     ["get", "name"],
@@ -56,7 +66,10 @@ const Dashboard = props => {
         setAllDistricts(districts);
         return districts.map(district => district.postcode);
       })
-      .then(districts => setMapFilter(["in", "name", ...districts]));
+      .then(districts => {
+        setMapFilter(["in", "name", ...districts]);
+        return districts;
+      });
   };
 
   const getTimeMap = () => {
@@ -146,6 +159,10 @@ const Dashboard = props => {
                     transportType={transportType}
                     travelDuration={travelDuration}
                     setTravelDuration={setTravelDuration}
+                    useRanking={useRanking}
+                    setUseRanking={setUseRanking}
+                    rankingBooleans={rankingBooleans}
+                    setRankingBooleans={setRankingBooleans}
                   />
                 </Container>
               </Container>

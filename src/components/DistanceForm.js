@@ -18,6 +18,7 @@ const DistanceForm = ({
     <Fragment>
       <div style={{ paddingBottom: "10px" }}>
         <Checkbox
+          toggle
           checked={useCommuteTime}
           onChange={() => setUseCommuteTime(!useCommuteTime)}
         />

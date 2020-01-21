@@ -8,8 +8,9 @@ const FilterCheckboxes = ({
   changeValue
 }) => {
   return (
-    <div style={{paddingBottom: "10px"}}>
+    <div style={{ paddingBottom: "10px" }}>
       <Checkbox
+        toggle
         onChange={() => setSelectedFilter(changeValue)}
         checked={selectedFilter === changeValue}
       />
