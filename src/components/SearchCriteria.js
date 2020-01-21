@@ -158,13 +158,15 @@ const SearchCriteria = ({
                 checked={rankingBooleans.averageBedrooms}
                 description="Average number of bedrooms per house in the  postcode district"
               />
-              <OrderCheckBoxes
-                rKey="averageBedrooms"
-                rankSortOrder={rankSortOrder}
-                setRankSortOrder={averageBedrooms =>
-                  setRankSortOrder({ ...rankSortOrder, averageBedrooms })
-                }
-              />
+              {rankingBooleans.averageBedrooms && (
+                <OrderCheckBoxes
+                  rKey="averageBedrooms"
+                  rankSortOrder={rankSortOrder}
+                  setRankSortOrder={averageBedrooms =>
+                    setRankSortOrder({ ...rankSortOrder, averageBedrooms })
+                  }
+                />
+              )}
               <BooleanCheckbox
                 message="Population Density"
                 getter={rankingBooleans.population}
@@ -174,13 +176,15 @@ const SearchCriteria = ({
                 checked={rankingBooleans.population}
                 description="Average population in the postcode district"
               />
-              <OrderCheckBoxes
-                rKey="population"
-                rankSortOrder={rankSortOrder}
-                setRankSortOrder={population =>
-                  setRankSortOrder({ ...rankSortOrder, population })
-                }
-              />
+              {rankingBooleans.population && (
+                <OrderCheckBoxes
+                  rKey="population"
+                  rankSortOrder={rankSortOrder}
+                  setRankSortOrder={population =>
+                    setRankSortOrder({ ...rankSortOrder, population })
+                  }
+                />
+              )}
               <BooleanCheckbox
                 message="Social Grade AB"
                 getter={rankingBooleans.socialGrade}
@@ -190,13 +194,15 @@ const SearchCriteria = ({
                 checked={rankingBooleans.socialGrade}
                 description="Ranked by NRS social grade"
               />
-              <OrderCheckBoxes
-                rKey="socialGrade"
-                rankSortOrder={rankSortOrder}
-                setRankSortOrder={socialGrade =>
-                  setRankSortOrder({ ...rankSortOrder, socialGrade })
-                }
-              />
+              {rankingBooleans.socialGrade && (
+                <OrderCheckBoxes
+                  rKey="socialGrade"
+                  rankSortOrder={rankSortOrder}
+                  setRankSortOrder={socialGrade =>
+                    setRankSortOrder({ ...rankSortOrder, socialGrade })
+                  }
+                />
+              )}
             </Grid.Column>
           </Grid>
         )}
