@@ -5,6 +5,7 @@ import SearchCriteria from "../components/SearchCriteria";
 import { mapsAPI, postcodesAPI } from "../adapters/API";
 import { getDistanceTime } from "../adapters/DistanceAPI";
 import RankingList from "../components/RankingList";
+import { ColorArray } from "../smallComponents/ColorOptions";
 
 const Dashboard = props => {
   //Hooks
@@ -49,6 +50,23 @@ const Dashboard = props => {
 
   const findCorrectDistrict = name => {
     return allDistricts.find(district => district.postcode === name);
+  };
+
+  const checkIfRankerSelected = () => {
+    if (
+      rankingBooleans.crimeRate ||
+      rankingBooleans.education ||
+      rankingBooleans.availability ||
+      rankingBooleans.socialGrade ||
+      rankingBooleans.averageBedrooms ||
+      rankingBooleans.population
+    ) {
+      console.log(true);
+      return true;
+    } else {
+      console.log(false);
+      return false;
+    }
   };
 
   //Ranker
@@ -208,6 +226,23 @@ const Dashboard = props => {
 
     setMapFilter(["in", "name", ...filteredArray]);
     setDisplayList(districtSorter(array2));
+    if (useRanking && checkIfRankerSelected()) {
+      styleMap();
+    } else {
+      setMapFillColor("#096925");
+    }
+  };
+
+  const styleMap = () => {
+    const tempArray = [...displayList].splice(0, 30);
+    const result = [];
+    let count = 0;
+    tempArray.forEach(district => {
+      result.push(district.postcode);
+      result.push(ColorArray[count++]);
+    });
+    result.push("#E22500");
+    setMapFillColor(["match", ["get", "name"], ...result]);
   };
 
   //Lifecycle
@@ -277,7 +312,6 @@ const Dashboard = props => {
                     useCommuteTime={useCommuteTime}
                     transportType={transportType}
                     mapFillColor={mapFillColor}
-                    setMapFillColor={setMapFillColor}
                     mapFilter={mapFilter}
                     setMapFilter={setMapFilter}
                     mapLayer={mapLayer}
