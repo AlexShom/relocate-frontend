@@ -1,7 +1,13 @@
 import React from "react";
 import { Form, Checkbox } from "semantic-ui-react";
 
-const OrderCheckBoxes = ({ rankSortOrder, setRankSortOrder, rKey }) => {
+const OrderCheckBoxes = ({
+  rankSortOrder,
+  setRankSortOrder,
+  rKey,
+  messageASC,
+  messageDESC
+}) => {
   return (
     <Form inverted style={{ paddingBottom: "15px" }}>
       <Form.Field>
@@ -13,6 +19,7 @@ const OrderCheckBoxes = ({ rankSortOrder, setRankSortOrder, rKey }) => {
           checked={rankSortOrder[rKey] === "ASC"}
           onChange={(event, output) => setRankSortOrder(output.value)}
         />
+        <p style={{color: "lightblue"}}>{messageASC}</p>
       </Form.Field>
       <Form.Field>
         <Checkbox
@@ -23,6 +30,7 @@ const OrderCheckBoxes = ({ rankSortOrder, setRankSortOrder, rKey }) => {
           checked={rankSortOrder[rKey] === "DESC"}
           onChange={(event, output) => setRankSortOrder(output.value)}
         />
+        <p style={{color: "lightblue"}}>{messageDESC}</p>
       </Form.Field>
     </Form>
   );

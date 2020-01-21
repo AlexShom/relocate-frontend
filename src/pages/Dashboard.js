@@ -4,6 +4,7 @@ import Viewer from "../components/Viewer";
 import SearchCriteria from "../components/SearchCriteria";
 import { mapsAPI, postcodesAPI } from "../adapters/API";
 import { getDistanceTime } from "../adapters/DistanceAPI";
+import RankingList from "../components/RankingList";
 
 const Dashboard = props => {
   //Hooks
@@ -18,6 +19,7 @@ const Dashboard = props => {
   const [travelDuration, setTravelDuration] = useState(0);
   const [loadingFetch, setLoadingFetch] = useState(false);
   const [useRanking, setUseRanking] = useState(false);
+  const [displayList, setDisplayList] = useState([]);
   const [rankingBooleans, setRankingBooleans] = useState({
     crimeRate: false,
     education: false,
@@ -51,8 +53,8 @@ const Dashboard = props => {
 
   //Ranker
 
-  const districtSorter = () => {
-    let array = [...allDistricts];
+  const districtSorter = list => {
+    let array = [...list];
 
     array.forEach(district => (district.rankingScore = 0));
 
@@ -148,6 +150,7 @@ const Dashboard = props => {
       .then(resp => resp.json())
       .then(districts => {
         setAllDistricts(districts);
+        setDisplayList(districts);
         return districts.map(district => district.postcode);
       })
       .then(districts => {
@@ -204,6 +207,7 @@ const Dashboard = props => {
     const filteredArray = array2.map(district => district.postcode);
 
     setMapFilter(["in", "name", ...filteredArray]);
+    setDisplayList(districtSorter(array2));
   };
 
   //Lifecycle
@@ -215,7 +219,16 @@ const Dashboard = props => {
 
   useEffect(() => {
     filterOutDistricts();
-  }, [selectedFilter, selectedWork, rentValue, travelDuration, useCommuteTime]);
+  }, [
+    selectedFilter,
+    selectedWork,
+    rentValue,
+    travelDuration,
+    useCommuteTime,
+    useRanking,
+    rankingBooleans,
+    rankSortOrder
+  ]);
 
   useEffect(() => {
     getTimeMap();
@@ -252,18 +265,12 @@ const Dashboard = props => {
                   />
                 </Container>
               </Container>
-              <Container className="gen-box">
-                <Container className="gen-box gen-bubble">
-                  List placeholder
-                </Container>
-              </Container>
             </Grid.Column>
 
             <Grid.Column name="map" width={10}>
               <Container className="gen-box">
                 <Container className="gen-box gen-bubble">
                   Map nav buttons
-                  <button onClick={districtSorter}>TESTER</button>
                 </Container>
                 <Container className="gen-box">
                   <Viewer
@@ -278,6 +285,11 @@ const Dashboard = props => {
                     findCorrectDistrict={findCorrectDistrict}
                     workPoint={selectedWork ? selectedWork.value : {}}
                   />
+                </Container>
+              </Container>
+              <Container className="gen-box">
+                <Container className="gen-box gen-bubble">
+                  {useRanking && <RankingList list={displayList} />}
                 </Container>
               </Container>
             </Grid.Column>

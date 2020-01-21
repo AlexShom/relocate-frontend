@@ -160,6 +160,8 @@ const SearchCriteria = ({
               />
               {rankingBooleans.averageBedrooms && (
                 <OrderCheckBoxes
+                  messageASC="Favours smaller apartments/houses"
+                  messageDESC="Favours larger apartments/houses"
                   rKey="averageBedrooms"
                   rankSortOrder={rankSortOrder}
                   setRankSortOrder={averageBedrooms =>
@@ -178,6 +180,8 @@ const SearchCriteria = ({
               />
               {rankingBooleans.population && (
                 <OrderCheckBoxes
+                  messageASC="Favours lower population/density"
+                  messageDESC="Favours higher population/density"
                   rKey="population"
                   rankSortOrder={rankSortOrder}
                   setRankSortOrder={population =>
@@ -196,6 +200,8 @@ const SearchCriteria = ({
               />
               {rankingBooleans.socialGrade && (
                 <OrderCheckBoxes
+                  messageASC="Favours working class demographics"
+                  messageDESC="Favours upper/middle class demographics"
                   rKey="socialGrade"
                   rankSortOrder={rankSortOrder}
                   setRankSortOrder={socialGrade =>
