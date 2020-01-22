@@ -48,7 +48,6 @@ export const getDistanceTime = (object, type) => {
     ]
   };
 
-  console.log(BODY);
   const configObj = {
     method: "POST",
     credentials: "same-origin",

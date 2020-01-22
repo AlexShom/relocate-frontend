@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 
 const NavBar = () => {
   //auth variables
-  const { logout } = useAuth0();
+  const { logout, isAuthenticated, user } = useAuth0();
 
   //hooks
   const [activeItem, setActiveItem] = useState("");
@@ -20,12 +20,8 @@ const NavBar = () => {
     <div className="nav-bar">
       <Redirect push to={activeItem} />
       <Menu style={{ height: "0px" }} inverted>
-        <Menu.Item
-          name=""
-          active={activeItem === ""}
-          onClick={handleItemClick}
-        >
-          Home
+        <Menu.Item name="" active={activeItem === ""} onClick={handleItemClick}>
+          <img style={{ width: "100px" }} src="images/relocate-logo.png"></img>
         </Menu.Item>
 
         <Menu.Item
@@ -49,6 +45,12 @@ const NavBar = () => {
             active={activeItem === "help"}
             onClick={handleItemClick}
           ></Menu.Item>
+          {isAuthenticated && (
+            <Menu.Item>
+              <img style={{borderRadius: "50%", paddingRight: "5px"}}src={user.picture}></img>
+              <div>{user.email}</div>
+            </Menu.Item>
+          )}
           <Menu.Item>
             <Button onClick={() => logout()} color="red" inverted>
               Log out

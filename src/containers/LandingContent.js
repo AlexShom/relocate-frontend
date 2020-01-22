@@ -10,9 +10,8 @@ const LandingContent = () => {
     <div className="landingContainer">
       <div className="parallax"></div>
       <Container className="centered landingBox">
-        <img src="images/relocate-logo.png"></img>
-        <h1>{"</relocate>"}</h1>
-        <h4>A guide on where to live in London</h4>
+        <img style={{width: "400px"}}src="images/relocate-logo.png"></img>
+        <h4>An application to deliver London property statistics by postcode district in a user driven and dynamic map environment.</h4>
         {isAuthenticated && (
           <h4>
             Welcome to the /relocate app! Scroll down to see more information or{" "}

@@ -32,6 +32,7 @@ const LoginForm = () => {
               </Button>
             </Link>
           )}
+          {!isAuthenticated && <h4>Don't want to make an account? Sign in with the guest credentials, email: guest@example.com, password: P@ssword</h4>}
         </Grid.Column>
       </Grid>
     </div>
