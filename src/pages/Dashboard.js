@@ -203,14 +203,14 @@ const Dashboard = props => {
     setMapFilter(["in", "name", ...filteredArray]);
     setDisplayList(districtSorter(array2));
     if (useRanking && checkIfRankerSelected()) {
-      styleMap();
+      styleMap(districtSorter(array2));
     } else {
       setMapFillColor("#096925");
     }
   };
 
-  const styleMap = () => {
-    const tempArray = [...displayList].splice(0, 30);
+  const styleMap = array => {
+    const tempArray = [...array].splice(0, 58);
     const result = [];
     let count = 0;
     tempArray.forEach(district => {
