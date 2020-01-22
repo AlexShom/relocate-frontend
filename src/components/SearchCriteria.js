@@ -189,26 +189,6 @@ const SearchCriteria = ({
                   }
                 />
               )}
-              <BooleanCheckbox
-                message="Social Grade AB"
-                getter={rankingBooleans.socialGrade}
-                setter={socialGrade =>
-                  setRankingBooleans({ ...rankingBooleans, socialGrade })
-                }
-                checked={rankingBooleans.socialGrade}
-                description="Ranked by NRS social grade"
-              />
-              {rankingBooleans.socialGrade && (
-                <OrderCheckBoxes
-                  messageASC="Favours working class demographics"
-                  messageDESC="Favours upper/middle class demographics"
-                  rKey="socialGrade"
-                  rankSortOrder={rankSortOrder}
-                  setRankSortOrder={socialGrade =>
-                    setRankSortOrder({ ...rankSortOrder, socialGrade })
-                  }
-                />
-              )}
             </Grid.Column>
           </Grid>
         )}

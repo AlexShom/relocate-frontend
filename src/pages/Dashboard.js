@@ -25,12 +25,10 @@ const Dashboard = props => {
     crimeRate: false,
     education: false,
     availability: false,
-    socialGrade: false,
     averageBedrooms: false,
     population: false
   });
   const [rankSortOrder, setRankSortOrder] = useState({
-    socialGrade: "ASC",
     averageBedrooms: "ASC",
     population: "ASC"
   });
@@ -57,14 +55,11 @@ const Dashboard = props => {
       rankingBooleans.crimeRate ||
       rankingBooleans.education ||
       rankingBooleans.availability ||
-      rankingBooleans.socialGrade ||
       rankingBooleans.averageBedrooms ||
       rankingBooleans.population
     ) {
-      console.log(true);
       return true;
     } else {
-      console.log(false);
       return false;
     }
   };
@@ -77,42 +72,24 @@ const Dashboard = props => {
     array.forEach(district => (district.rankingScore = 0));
 
     if (rankingBooleans.crimeRate) {
-      console.log("hit crime");
       let sortedArray = array.sort(sortWithAttribute("crime_rate"));
       sortedArray.forEach(
         district => (district.rankingScore += sortedArray.indexOf(district))
       );
     }
     if (rankingBooleans.education) {
-      console.log("hit edu");
       let sortedArray = array.sort(sortWithAttribute("education", "DESC"));
       sortedArray.forEach(
         district => (district.rankingScore += sortedArray.indexOf(district))
       );
     }
     if (rankingBooleans.availability) {
-      console.log("hit availability");
       let sortedArray = array.sort(sortWithAttribute("availability", "DESC"));
       sortedArray.forEach(
         district => (district.rankingScore += sortedArray.indexOf(district))
       );
     }
-    if (rankingBooleans.socialGrade) {
-      console.log("hit grade");
-      if (rankSortOrder.socialGrade === "ASC") {
-        let sortedArray = array.sort(sortWithAttribute("social_grade"));
-        sortedArray.forEach(
-          district => (district.rankingScore += sortedArray.indexOf(district))
-        );
-      } else {
-        let sortedArray = array.sort(sortWithAttribute("social_grade", "DESC"));
-        sortedArray.forEach(
-          district => (district.rankingScore += sortedArray.indexOf(district))
-        );
-      }
-    }
     if (rankingBooleans.averageBedrooms) {
-      console.log("hit bed");
       if (rankSortOrder.averageBedrooms === "ASC") {
         let sortedArray = array.sort(sortWithAttribute("average_bedrooms"));
         sortedArray.forEach(
@@ -128,7 +105,6 @@ const Dashboard = props => {
       }
     }
     if (rankingBooleans.population) {
-      console.log("hit pop");
       if (rankSortOrder.population === "ASC") {
         let sortedArray = array.sort(sortWithAttribute("population"));
         sortedArray.forEach(

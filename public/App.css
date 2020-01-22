@@ -149,97 +149,107 @@ input {
 }
 
 .selector {
-  color: black
+  color: black;
+}
+
+table,
+th,
+td {
+  border: 1px solid #2d2e2f;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 15px;
 }
 
 .list-item-1 {
-  color: #0CA800
+  color: #0ca800;
 }
 .list-item-2 {
-  color: #23AD00
+  color: #23ad00;
 }
 .list-item-3 {
-  color: #3BB200
+  color: #3bb200;
 }
 .list-item-4 {
-  color: #53B800
+  color: #53b800;
 }
 .list-item-5 {
-  color: #6BBD00
+  color: #6bbd00;
 }
 .list-item-6 {
-  color: #83C300
+  color: #83c300;
 }
 .list-item-7 {
-  color: #9AC800
+  color: #9ac800;
 }
 .list-item-8 {
-  color: #B2CD00
+  color: #b2cd00;
 }
 .list-item-9 {
-  color: #CAD300
+  color: #cad300;
 }
 .list-item-10 {
-  color: #E2D800
+  color: #e2d800;
 }
 .list-item-11 {
-  color: #FADE00
+  color: #fade00;
 }
 .list-item-12 {
-  color: #FAD200
+  color: #fad200;
 }
 .list-item-13 {
-  color: #FAC600
+  color: #fac600;
 }
 .list-item-14 {
-  color: #FABA00
+  color: #faba00;
 }
 .list-item-15 {
-  color: #FAAE00
+  color: #faae00;
 }
 .list-item-16 {
-  color: #FAA200
+  color: #faa200;
 }
 .list-item-17 {
-  color: #FA9600
+  color: #fa9600;
 }
 .list-item-18 {
-  color: #FA8A00
+  color: #fa8a00;
 }
 .list-item-19 {
-  color: #FA7E00
+  color: #fa7e00;
 }
 .list-item-20 {
-  color: #FA7200
+  color: #fa7200;
 }
 .list-item-21 {
-  color: #F86A00
+  color: #f86a00;
 }
 .list-item-22 {
-  color: #F66300
+  color: #f66300;
 }
 .list-item-23 {
-  color: #F45B00
+  color: #f45b00;
 }
 .list-item-24 {
-  color: #F25400
+  color: #f25400;
 }
 .list-item-25 {
-  color: #F04C00
+  color: #f04c00;
 }
 .list-item-26 {
-  color: #EE4500
+  color: #ee4500;
 }
 .list-item-27 {
-  color: #EC3D00
+  color: #ec3d00;
 }
 .list-item-28 {
-  color: #EA3600
+  color: #ea3600;
 }
 .list-item-29 {
-  color: #E82E00
+  color: #e82e00;
 }
 .list-item-30 {
-  color: #E62700
+  color: #e62700;
 }
-
