@@ -163,13 +163,13 @@ const Dashboard = props => {
             newAllArray.map(item => {
               if (item.postcode.toUpperCase() === dist.code.toUpperCase()) {
                 item.travelTime = Math.ceil(
-                  dist.properties.travel_time_reachable.mean / 60
+                  dist.properties.travel_time_reachable.min / 60
                 );
               } else if (
                 dist.code.toUpperCase().includes(item.postcode.toUpperCase())
               ) {
                 item.travelTime = Math.ceil(
-                  dist.properties.travel_time_reachable.mean / 60
+                  dist.properties.travel_time_reachable.min / 60
                 );
               }
             });

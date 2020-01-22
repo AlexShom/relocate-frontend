@@ -40,14 +40,13 @@ const NavBar = () => {
           Sources/Methodology
         </Menu.Item>
         <Menu.Menu position="right">
-          <Menu.Item
-            name="help"
-            active={activeItem === "help"}
-            onClick={handleItemClick}
-          ></Menu.Item>
+          
           {isAuthenticated && (
-            <Menu.Item>
-              <img style={{borderRadius: "50%", paddingRight: "5px"}}src={user.picture}></img>
+            <Menu.Item name="account" onClick={handleItemClick}>
+              <img
+                style={{ borderRadius: "50%", paddingRight: "5px" }}
+                src={user.picture}
+              ></img>
               <div>{user.email}</div>
             </Menu.Item>
           )}

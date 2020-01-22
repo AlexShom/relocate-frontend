@@ -52,7 +52,12 @@ const RankingList = ({ list }) => {
         </tbody>
       </table>
       <div style={{ textAlign: "center" }}>
-        <Button onClick={() => setShowMore(!showMore)} content="Show More" />
+        {!showMore && (
+          <Button onClick={() => setShowMore(true)} content="Show More" />
+        )}
+        {showMore && (
+          <Button onClick={() => setShowMore(false)} content="Show Less" />
+        )}
       </div>
     </Fragment>
   );
