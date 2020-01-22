@@ -7,8 +7,7 @@ const LandingContent = () => {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <div className="landingContainer">
-      <div className="parallax"></div>
+    <div className="landingContainer has-image">
       <Container className="centered landingBox">
         <img style={{width: "400px"}}src="images/relocate-logo.png"></img>
         <h4>An application to deliver London property statistics by postcode district in a user driven and dynamic map environment.</h4>
@@ -21,11 +20,6 @@ const LandingContent = () => {
         )}
         <LoginForm />
       </Container>
-      <div className="scroll-down"></div>
-      <Container style={{ backgroundColor: "black" }}>
-        hey ho to you bro
-      </Container>
-      <div className="parallax"></div>
     </div>
   );
 };

@@ -6,7 +6,6 @@ const LandingPage = props => {
   return (
     <Fragment>
       <LandingContent />
-      <Footer />
     </Fragment>
   );
 };

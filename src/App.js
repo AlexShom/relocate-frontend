@@ -7,6 +7,8 @@ import history from "./utils/history";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
 import NavBar from "./containers/NavBar"
+import Footer from "./containers/Footer";
+import Sources from "./pages/Sources"
 
 function App() {
   const { loading, isAuthenticated } = useAuth0();
@@ -21,9 +23,11 @@ function App() {
       {isAuthenticated && <NavBar/>}
         <Switch>
           <Route path="/" exact component={LandingPage}/>
+          <Route path="/sources" exact component={Sources}/>
           <PrivateRoute path="/account" component={Profile} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
         </Switch>
+        <Footer/>
       </Router>
     </div>
   );

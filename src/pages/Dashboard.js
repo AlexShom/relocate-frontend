@@ -280,9 +280,6 @@ const Dashboard = props => {
 
             <Grid.Column name="map" width={10}>
               <Container className="gen-box">
-                <Container className="gen-box gen-bubble">
-                  Map nav buttons
-                </Container>
                 <Container className="gen-box">
                   <Viewer
                     useCommuteTime={useCommuteTime}

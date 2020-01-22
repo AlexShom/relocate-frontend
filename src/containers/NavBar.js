@@ -44,7 +44,7 @@ const NavBar = () => {
           {isAuthenticated && (
             <Menu.Item name="account" onClick={handleItemClick}>
               <img
-                style={{ borderRadius: "50%", paddingRight: "5px" }}
+                style={{ borderRadius: "100%", paddingRight: "10px" }}
                 src={user.picture}
               ></img>
               <div>{user.email}</div>

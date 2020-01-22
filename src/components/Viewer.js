@@ -68,15 +68,6 @@ const Viewer = ({
     });
   };
 
-  const handleCenterOnUS = () => {
-    setViewport({
-      latitude: 37.0902,
-      longitude: -95.7129,
-      transitionDuration: 1000,
-      transitionInterpolator: new FlyToInterpolator()
-    });
-  };
-
   //Hover Function//
 
   //Hook
@@ -177,7 +168,6 @@ const Viewer = ({
   return (
     <div id="map">
       <button onClick={handleCenter}>Center on London</button>
-      <button onClick={handleCenterOnUS}>Center on usa</button>
       <ReactMapGL
         {...viewport}
         {...settings}
