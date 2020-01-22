@@ -1,35 +1,60 @@
-import React from "react";
-import { Table } from "semantic-ui-react";
+import React, { useState, Fragment } from "react";
+import { Table, Button } from "semantic-ui-react";
 
 const RankingList = ({ list }) => {
+  const [showMore, setShowMore] = useState(false);
+  let firstHalf = [...list];
+  let halfResult = firstHalf.splice(0, 60);
   let count = 0;
   return (
-    <table>
-      <thead style={{ textAlign: "left" }}>
-        <tr>
-          <th>Postcode</th>
-          <th>Crime score</th>
-          <th>Education score</th>
-          <th>Availability score</th>
-          <th>Average Bedrooms score</th>
-          <th>Population Density score</th>
-        </tr>
-      </thead>
-      <tbody>
-        {list.map(element => {
-          return (
-            <tr className={`list-item-${++count}`} key={element.postcode}>
-              <td>{element.postcode}</td>
-              <td>{element.crime_rate}</td>
-              <td>{element.education}</td>
-              <td>{element.availability}</td>
-              <td>{element.average_bedrooms}</td>
-              <td>{element.population}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <Fragment>
+      <table>
+        <thead style={{ textAlign: "left" }}>
+          <tr>
+            <th>Rank</th>
+            <th>Postcode</th>
+            <th>Crime score</th>
+            <th>Education score</th>
+            <th>Availability score</th>
+            <th>Average Bedrooms score</th>
+            <th>Population Density score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {!showMore &&
+            halfResult.map(element => {
+              return (
+                <tr className={`list-item-${++count}`} key={element.postcode}>
+                  <td>{list.indexOf(element) + 1}</td>
+                  <td>{element.postcode}</td>
+                  <td>{element.crime_rate}</td>
+                  <td>{element.education}</td>
+                  <td>{element.availability}</td>
+                  <td>{element.average_bedrooms}</td>
+                  <td>{element.population}</td>
+                </tr>
+              );
+            })}
+          {showMore &&
+            list.map(element => {
+              return (
+                <tr className={`list-item-${++count}`} key={element.postcode}>
+                  <td>{list.indexOf(element) + 1}</td>
+                  <td>{element.postcode}</td>
+                  <td>{element.crime_rate}</td>
+                  <td>{element.education}</td>
+                  <td>{element.availability}</td>
+                  <td>{element.average_bedrooms}</td>
+                  <td>{element.population}</td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+      <div style={{ textAlign: "center" }}>
+        <Button onClick={() => setShowMore(!showMore)} content="Show More" />
+      </div>
+    </Fragment>
   );
 };
 
