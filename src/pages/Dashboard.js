@@ -36,6 +36,7 @@ const Dashboard = props => {
   //Data driven styling
 
   const [mapFilter, setMapFilter] = useState([]);
+  const [selectedDistrict, setSelectedDistrict] = useState("none");
   const [mapFillColor, setMapFillColor] = useState([
     "match",
     ["get", "name"],
@@ -282,6 +283,7 @@ const Dashboard = props => {
               <Container className="gen-box">
                 <Container className="gen-box">
                   <Viewer
+                    selectedDistrict={selectedDistrict}
                     useCommuteTime={useCommuteTime}
                     transportType={transportType}
                     mapFillColor={mapFillColor}
@@ -296,7 +298,13 @@ const Dashboard = props => {
               </Container>
               <Container className="gen-box">
                 <Container className="gen-box gen-bubble">
-                  {useRanking && <RankingList list={displayList} />}
+                  {useRanking && (
+                    <RankingList
+                      selectedDistrict={selectedDistrict}
+                      setSelectedDistrict={setSelectedDistrict}
+                      list={displayList}
+                    />
+                  )}
                 </Container>
               </Container>
             </Grid.Column>

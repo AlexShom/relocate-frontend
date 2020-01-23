@@ -20,7 +20,8 @@ const Viewer = ({
   findCorrectDistrict,
   workPoint,
   transportType,
-  useCommuteTime
+  useCommuteTime,
+  selectedDistrict
 }) => {
   //map control//
 
@@ -55,6 +56,17 @@ const Viewer = ({
       "fill-outline-color": "#000000"
     },
     filter: mapFilter
+  };
+
+  const selectLayer = {
+    id: "secondData",
+    type: "fill",
+    paint: {
+      "fill-color": "#0E6EB8",
+      "fill-opacity": 0.8,
+      "fill-outline-color": "#000000"
+    },
+    filter: ["in", "name", selectedDistrict]
   };
 
   //Center button function//
@@ -178,8 +190,12 @@ const Viewer = ({
         mapboxApiAccessToken={TOKEN}
         onHover={onHover}
       >
-        <Source type="geojson" data={mapLayer}>
+        <Source key="layer1" type="geojson" data={mapLayer}>
           <Layer {...postcodeLayer} />
+        </Source>
+
+        <Source key="layer2" type="geojson" data={mapLayer}>
+          <Layer {...selectLayer} />
         </Source>
 
         {tooltip()}
