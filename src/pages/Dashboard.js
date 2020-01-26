@@ -135,13 +135,22 @@ const Dashboard = props => {
 
   const getMapLayer = () => {
     fetch(mapsAPI)
+      .then(resp => {
+        setLoadingFetch(true);
+        return resp;
+      })
       .then(resp => resp.json())
       .then(json => json.data)
-      .then(json => setMapLayer(json));
+      .then(json => setMapLayer(json))
+      .then(setLoadingFetch(false));
   };
 
   const getPostcodeInfo = () => {
     fetch(postcodesAPI)
+      .then(resp => {
+        setLoadingFetch(true);
+        return resp;
+      })
       .then(resp => resp.json())
       .then(districts => {
         setAllDistricts(districts);
@@ -151,7 +160,8 @@ const Dashboard = props => {
       .then(districts => {
         setMapFilter(["in", "name", ...districts]);
         return districts;
-      });
+      })
+      .then(setLoadingFetch(false));
   };
 
   const getTimeMap = () => {
