@@ -23,9 +23,9 @@ function App() {
         {isAuthenticated && <NavBar />}
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/sources" component={Sources} />
-          <PrivateRoute exact path="/account" component={Profile} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <Route path="/sources" component={Sources} />
+          <PrivateRoute path="/account" component={Profile} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
         </Switch>
         <Footer />
       </Router>
