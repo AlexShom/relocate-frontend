@@ -24,8 +24,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={LandingPage}/>
           <Route path="/sources" exact component={Sources}/>
-          <PrivateRoute path="/account" component={Profile} />
-          <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/account" exact component={Profile} />
+          <PrivateRoute path="/dashboard" exact component={Dashboard} />
         </Switch>
         <Footer/>
       </Router>
