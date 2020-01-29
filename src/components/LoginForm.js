@@ -33,7 +33,7 @@ const LoginForm = () => {
             </Link>
           )}
           {!isAuthenticated && (
-            <div style={{padding: "20px"}}>
+            <div style={{ padding: "20px" }}>
               <h4>
                 Don't want to make an account? Sign in with the guest
                 credentials,{" "}

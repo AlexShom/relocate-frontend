@@ -9,36 +9,6 @@ const beds4 = require("./individuals/4_beds_rent.json");
 const beds5 = require("./individuals/5_beds_rent.json");
 const rentals = require("./rentals.json");
 
-// //
-
-// const bedsArray = [beds0, beds1, beds2, beds3, beds4, beds5]
-
-// const bedsRent = (featureCollection, bedsNum) => {
-//   array = featureCollection.map(resp => {
-//     if (resp.data) {
-//       return { [resp.postcode]: resp.data.long_let.average };
-//     } else {
-//       return null;
-//     }
-//   });
-//   return {[bedsNum]: cleaner(array)}
-// };
-
-// cleaner = (array) => {
-//   return array.filter(el => el !== null)
-// }
-
-// //
-
-// makeArray = (array) => {
-//   const newArray = array.map(collection => bedsRent(collection, array.indexOf(collection)))
-//   return (newArray)
-// }
-
-// finalObj = makeArray(bedsArray)
-
-// jsonfile.writeFile("/Users/alexshom/Documents/GitHub/relocate/relocate-frontend/src/geoData/rentals.json", finalObj)
-
 const assignRents = (json, array, value) => {
   json.features.map(feature => {
     array[value][value].map(pair => {

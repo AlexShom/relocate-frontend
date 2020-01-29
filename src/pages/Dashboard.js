@@ -7,18 +7,29 @@ import { getDistanceTime } from "../adapters/DistanceAPI";
 import RankingList from "../components/RankingList";
 import { ColorArray } from "../smallComponents/ColorOptions";
 
-const Dashboard = props => {
-  //Hooks
+const Dashboard = () => {
+  // Hooks
 
+  // Financial filter
   const [selectedFilter, setSelectedFilter] = useState("useRent");
   const [rentValue, setRentValue] = useState(0);
+
+  // Map layer data
   const [mapLayer, setMapLayer] = useState(null);
+
+  // List of all districts
   const [allDistricts, setAllDistricts] = useState([]);
+
+  // Commute time filter
   const [useCommuteTime, setUseCommuteTime] = useState(false);
   const [selectedWork, setSelectedWork] = useState(null);
   const [transportType, setTransportType] = useState("useDriving");
   const [travelDuration, setTravelDuration] = useState(0);
+
+  // loading state
   const [loadingFetch, setLoadingFetch] = useState(false);
+
+  // Ranking
   const [useRanking, setUseRanking] = useState(false);
   const [displayList, setDisplayList] = useState([]);
   const [rankingBooleans, setRankingBooleans] = useState({
@@ -201,6 +212,8 @@ const Dashboard = props => {
 
     const filteredArray = array2.map(district => district.postcode);
 
+    // Then set map layer info and ranker state
+
     setMapFilter(["in", "name", ...filteredArray]);
     setDisplayList(districtSorter(array2));
     if (useRanking && checkIfRankerSelected()) {
@@ -209,6 +222,8 @@ const Dashboard = props => {
       setMapFillColor("#096925");
     }
   };
+
+  // Function to set state for color styling on the map, used above
 
   const styleMap = array => {
     const tempArray = [...array].splice(0, 58);
@@ -245,6 +260,7 @@ const Dashboard = props => {
   useEffect(() => {
     getTimeMap();
   }, [selectedWork, transportType]);
+
   //Render
 
   return (

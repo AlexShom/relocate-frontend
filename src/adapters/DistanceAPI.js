@@ -1,3 +1,5 @@
+// Functions for fetching data from external APIs
+
 import { distanceAPI, timeAPI } from "./API";
 
 export const getSearchResults = input => {

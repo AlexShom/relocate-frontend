@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import LandingContent from "../containers/LandingContent";
-import Footer from "../containers/Footer";
 
-const LandingPage = props => {
+const LandingPage = () => {
   return (
     <Fragment>
       <LandingContent />

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Checkbox } from "semantic-ui-react";
 
 const FilterCheckboxes = ({

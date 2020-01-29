@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Grid } from "semantic-ui-react";
 import ValueSlider from "../smallComponents/ValueSlider";
 import FilterCheckboxes from "./FilterCheckboxes";

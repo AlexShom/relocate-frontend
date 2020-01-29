@@ -8,7 +8,6 @@ import ReactMapGL, {
 import Pin from "../smallComponents/Pin";
 
 //Mapbox Token
-//REMEMBER TO SET TO ENV VARIABLE IN RAILS CREDENTIALS
 
 const TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 

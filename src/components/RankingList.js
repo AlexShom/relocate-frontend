@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import { Table, Button } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 const RankingList = ({ list, setSelectedDistrict, selectedDistrict }) => {
   const [showMore, setShowMore] = useState(false);

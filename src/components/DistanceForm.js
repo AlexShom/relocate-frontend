@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Checkbox } from "semantic-ui-react";
 import DropdownComponent from "./DropdownComponent";
 import FilterCheckboxes from "./FilterCheckboxes";

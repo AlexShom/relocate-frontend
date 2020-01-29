@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 const SourcesPage = () => {
   return (
@@ -56,17 +56,25 @@ const SourcesPage = () => {
           <li>
             <h4 style={{ paddingBottom: "10px", paddingTop: "10px" }}>
               Sorting
-            </h4> 
-            <h4 style={{paddingBottom: "10px"}}>
-              The sorting is done by ranking each postcode according to the selected criteria from first to last. If multiple criteria are selected then the index at each sort is summed and a running score is assigned to the Postcode in question. Ultimately the list is sorted again by the resulting scores, with lowest first.
+            </h4>
+            <h4 style={{ paddingBottom: "10px" }}>
+              The sorting is done by ranking each postcode according to the
+              selected criteria from first to last. If multiple criteria are
+              selected then the index at each sort is summed and a running score
+              is assigned to the Postcode in question. Ultimately the list is
+              sorted again by the resulting scores, with lowest first.
             </h4>
           </li>
           <li>
             <h4 style={{ paddingBottom: "10px", paddingTop: "10px" }}>
               Filering by financial values
-            </h4> 
+            </h4>
             <h4>
-              It is important to note the limited accuracy of inference based on averages, especially when the ranges in London Districts are very large. However it was the only data available and it serves the goal of this project, which was to demonstrate displaying and manipulating the data.
+              It is important to note the limited accuracy of inference based on
+              averages, especially when the ranges in London Districts are very
+              large. However it was the only data available and it serves the
+              goal of this project, which was to demonstrate displaying and
+              manipulating the data.
             </h4>
           </li>
         </ul>

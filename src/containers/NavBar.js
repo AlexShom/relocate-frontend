@@ -40,7 +40,6 @@ const NavBar = () => {
           Sources/Methodology
         </Menu.Item>
         <Menu.Menu position="right">
-          
           {isAuthenticated && (
             <Menu.Item name="account" onClick={handleItemClick}>
               <img
