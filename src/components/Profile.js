@@ -9,9 +9,8 @@ const Profile = () => {
   }
 
   return (
-    <div className="gen-box" style={{textAlign: "center"}}>
-      {console.log(user)}
-      <img style={{borderRadius: "100%"}}src={user.picture} alt="Profile" />
+    <div className="gen-box" style={{ textAlign: "center" }}>
+      <img style={{ borderRadius: "100%" }} src={user.picture} alt="Profile" />
 
       <h2>{user.name}</h2>
       <p>{user.email}</p>
